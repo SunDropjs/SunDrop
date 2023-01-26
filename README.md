@@ -34,7 +34,7 @@ const ball = new LEX.Circle(window.innerWidth / 2, window.innerHeight / 2, 5)
 ball.props = {
  movable: true,
  solid: true,
- visible: true
+ visible: true,
  color: 0xFFFFFF
 }
 
