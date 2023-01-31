@@ -1,0 +1,19 @@
+{
+  "name": "lexend",
+  "version": "1.0.0",
+  "description": "A javascript game engine",
+  "main": "./build/index.mjs",
+  "scripts": {
+    "test": "echo script from test package "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GappleCider/Lexend.git"
+  },
+  "author": "GappleCider",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GappleCider/Lexend/issues"
+  },
+  "homepage": "https://github.com/GappleCider/Lexend#readme"
+}
