@@ -27,8 +27,6 @@ LEX.init({ color: 0x000000 });
 
 const renderer = new LEX.Renderer();
 
-const renderer = new LEX.Renderer();
-
 const ball = new LEX.Circle(window.innerWidth / 2, window.innerHeight / 2, 5);
 
 ball.props = {
