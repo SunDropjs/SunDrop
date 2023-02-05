@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "A javascript game engine",
   "main": "./build/index.mjs",
+  "exports": "./build/index.mjs",
   "scripts": {
     "test": "echo script from test package "
   },
@@ -15,5 +16,6 @@
   "bugs": {
     "url": "https://github.com/GappleCider/Lexend/issues"
   },
-  "homepage": "https://github.com/GappleCider/Lexend#readme"
+  "homepage": "https://github.com/GappleCider/Lexend#readme",
+  "type": "module"
 }

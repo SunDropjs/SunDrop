@@ -1,14 +1,14 @@
-# Lexend
+# Lexend  
 
-## Lexend is Javascript game engine
+## Lexend is Javascript game engine  
 
-**Use:**
+**Use:**  
 
 ```npm
 npm install lexend
-```
+```  
 
-### When Installed
+### When Installed  
 
 ```javascript
 import * as LEX from "lexend";
@@ -16,9 +16,25 @@ import * as LEX from "lexend";
 LEX.init();
 
 const renderer = new LEX.Renderer();
-```
+```  
 
-### Game of Pong
+### Game of Pong  
+
+#### HTML
+
+```html
+<body style="overflow: hidden">
+ <style>
+  body {
+    margin: 0;
+    padding: 0;
+  }
+ </style>
+ <script src="path/to/your/javascript/file"></script>
+</body>
+```  
+
+#### Javascript  
 
 ```javascript
 import * as LEX from "lexend";
