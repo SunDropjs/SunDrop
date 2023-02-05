@@ -1,5 +1,5 @@
 # Examples
 
-## The folder contains the following LEX projects
+## The folder contains the following SUN projects
 
 ### Pong
