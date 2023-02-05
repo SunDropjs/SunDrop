@@ -1,21 +1,21 @@
-# Lexend  
+# SunDrop
 
-## Lexend is Javascript game engine  
+## Sundrop is currently a 2d Javascript game engine  
 
 **Use:**  
 
 ```npm
-npm install lexend
+npm install sundrop
 ```  
 
 ### When Installed  
 
 ```javascript
-import * as LEX from "lexend";
+import * as SUN from "sundrop";
 
-LEX.init();
+SUN.init();
 
-const renderer = new LEX.Renderer();
+const renderer = new SUN.Renderer();
 ```  
 
 ### Game of Pong  
@@ -37,13 +37,13 @@ const renderer = new LEX.Renderer();
 #### Javascript  
 
 ```javascript
-import * as LEX from "lexend";
+import * as SUN from "sundrop";
 
-LEX.init({ color: 0x000000 });
+SUN.init({ color: 0x000000 });
 
-const renderer = new LEX.Renderer();
+const renderer = new SUN.Renderer();
 
-const ball = new LEX.Circle(window.innerWidth / 2, window.innerHeight / 2, 5);
+const ball = new SUN.Circle(window.innerWidth / 2, window.innerHeight / 2, 5);
 
 ball.props = {
   movable: true,
@@ -52,5 +52,5 @@ ball.props = {
   color: 0xffffff,
 };
 
-const paddle = new LEX.Box(20, window.innerHeight / 2, 10, 50);
+const paddle = new SUN.Box(20, window.innerHeight / 2, 10, 50);
 ```
