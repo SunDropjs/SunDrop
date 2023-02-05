@@ -1,12 +1,10 @@
-import * as LEX from "../../build/index.mjs";
+import * as SUN from "../../build/index.mjs";
 
-console.log(LEX)
+SUN.init({ backgroundColor: "black" });
 
-LEX.init({ backgroundColor: "black" });
+const renderer = new SUN.Renderer();
 
-const renderer = new LEX.Renderer();
-
-const paddle = new LEX.Box(
+const paddle = new SUN.Box(
   10,
   window.innerHeight / 2,
   10,
@@ -21,7 +19,7 @@ paddle.props = {
   solid: "screenBorders."
 };
 
-const ball = new LEX.Circle(window.innerWidth / 2, window.innerHeight / 2,  10)
+const ball = new SUN.Circle(window.innerWidth / 2, window.innerHeight / 2,  10)
 
 ball.props = {
   visible: true,
