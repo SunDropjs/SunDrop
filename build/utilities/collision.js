@@ -63,6 +63,16 @@ export function checkCollision(shape1, shape2) {
     if (distX <= shape1.width / 2 || distY <= shape1.height / 2) {
       return true;
     }
+
+    const hypot =
+      (distX - shape1.width / 2) * (distX - shape1.width / 2) +
+      (distY - shape1.height / 2) * (distY - shape1.height / 2);
+
+    if (hypot <= shape2.radius * shape2.radius) {
+      return true;
+    } else {
+      return false;
+    }
   }
   if (shape1.type === "circle" && shape2.class === "polygon") {
     const distX = Math.abs(shape1.pos.x - shape2.pos.x);
@@ -76,6 +86,16 @@ export function checkCollision(shape1, shape2) {
     }
     if (distX <= shape2.width / 2 || distY <= shape2.height / 2) {
       return true;
+    }
+
+    const hypot =
+      (distX - shape2.width / 2) * (distX - shape2.width / 2) +
+      (distY - shape2.height / 2) * (distY - shape2.height / 2);
+
+    if (hypot <= shape1.radius * shape1.radius) {
+      return true;
+    } else {
+      return false;
     }
   }
 }

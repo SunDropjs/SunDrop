@@ -55,37 +55,37 @@ renderer.add(paddle2);
 renderer.add(ball);
 renderer.add(centerLine);
 
-let addX = -4;
-let addY = -4;
+let addX = -8
+let addY = -8
 
 function animate() {
-  if (ball.pos.y <= 10) {
+  if (ball.pos.y <= ball.radius) {
     addY = -addY;
   }
   if (ball.pos.y >= window.innerHeight) {
     addY = -addY;
   }
   if (ball.pos.x <= paddle.pos.x || ball.pos.x >= paddle2.pos.x) {
-    ball.pos.x = window.innerWidth / 2;
-    ball.pos.y = window.innerHeight / 2;
+    ball.pos.x = SUN.random(0, window.innerWidth);
+    ball.pos.y = SUN.random(0, window.innerHeight);
   }
   let paddleCollide = SUN.checkCollision(ball, paddle);
   let paddleCollide2 = SUN.checkCollision(ball, paddle2);
 
   if (paddleCollide) {
-    addX = 4;
+    addX = 8
   }
   if (paddleCollide2) {
-    addX = -4;
+    addX = -8
   }
 
   ball.pos.x += addX;
   ball.pos.y += addY;
 
   if (ball.pos.y > paddle2.pos.y) {
-    paddle2.pos.y += 4 + SUN.random(0, 2) - SUN.random(0, 4);
+    paddle2.pos.y += 4 + SUN.random(4, 8)
   } else if (ball.pos.y < paddle2.pos.y) {
-    paddle2.pos.y -= 4 + SUN.random(0, 2) - SUN.random(0, 4);
+    paddle2.pos.y -= 4 + SUN.random(4, 8)
   }
 
   document.addEventListener("mousemove", (e) => {
