@@ -1,96 +1,101 @@
-import { gravity } from "../utilities/physics.js";
-
 // Box class
 export class Box {
-    constructor(x, y, width, height) {
-        // Box position
-        this.pos = {
-            x: x,
-            y: y
-        }
+  constructor(x, y, width, height) {
+    // Box position
+    this.pos = {
+      x: x,
+      y: y,
+    };
 
-        // Box width and height
-        this.width = width;
-        this.height = height;
+    this.angle = 0;
 
-        // Box shape
-        this.polygon = this.generatePolygon()
+    // Box width and height
+    this.width = width;
+    this.height = height;
 
-        // Box properties
-        this.props = {
-            visible: true
-        }
+    // Box shape
+    this.polygon = this.generatePolygon();
 
-        // Custom properties
-        this.tags = {
+    // Box properties
+    this.props = {
+      visible: true,
+      style: "fill"
+    };
 
-        } 
+    // Custom properties
+    this.tags = {};
 
-        // Object type
-        this.type = "box"
-    }
+    // Object type
+    this.type = "box";
 
-    generatePolygon() {
-        // Points holds the postion of the vertices of the polygon.
-        let points = [];
+    this.class = "polygon"
+  }
 
-        // Bottom right vertex
-        points.push({
-            x: this.pos.x + (this.width / 2),
-            y: this.pos.y + (this.height / 2)
-        })
+  generatePolygon() {
+    const points = []
 
-        // Top right vertex
-        points.push({
-            x: this.pos.x+ (this.width / 2),
-            y: this.pos.y - (this.height / 2)
-        })
-
-        // Top left vertex
-        points.push({
-            x: this.pos.x - (this.width / 2),
-            y: this.pos.y - (this.height / 2)
-        })
-
-        // Bottom left vertex
-        points.push({
-            x: this.pos.x - (this.width / 2),
-            y: this.pos.y + (this.height / 2)
-        })
-
-        return points
-    }
+    points.push({
+      x: this.pos.x - (this.width / 2),
+      y: this.pos.y - (this.height / 2),
+    });
+    points.push({
+      x: this.pos.x + (this.width / 2),
+      y: this.pos.y - (this.height / 2),
+    });
+    points.push({
+      x: this.pos.x + (this.width / 2),
+      y: this.pos.y + (this.height / 2),
+    });
+    points.push({
+      x: this.pos.x - (this.width / 2),
+      y: this.pos.y + (this.height / 2),
+    });
     
-    update() {
+    return points;
+  }
 
-        this.polygon = this.generatePolygon()
-    }
+  update() {
+    this.polygon = this.generatePolygon();
+  }
 }
 
 export class Circle {
-    constructor(x, y, radius) {
-        this.pos = {
-            x: x,
-            y: y
-        }
+  constructor(x, y, radius) {
+    this.pos = {
+      x: x,
+      y: y,
+    };
 
-        this.radius = radius
-        this.type = "circle"
+    this.radius = radius;
 
-        this.props = {
-            visible: true
-        }
+    this.type = "circle";
 
-        this.tags = {
-        
-        }
+    this.props = {
+      visible: true,
+      style: "fill"
+    };
 
-        if (this.props.material != undefined) {
-            if (this.props.material = "basic") {
+    this.tags = {};
+  }
+}
 
-            } else if (this.props.material = "bouncy") {
-                
-            }
-        }
+export class Line {
+  constructor(startX, startY, endX, endY) {
+    this.start = {
+      x: startX,
+      y: startY,
     }
+    this.end = {
+      x: endX,
+      y: endY,
+    }
+
+    this.type = "line";
+
+    this.props = {
+      visible: true,
+    };
+
+    this.tags = {};
+  }
 }

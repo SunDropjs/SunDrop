@@ -1,3 +1,7 @@
 .npmrc
 
 .vscode/
+
+.github/
+
+.gitpod.yml
