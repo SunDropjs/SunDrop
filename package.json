@@ -1,6 +1,6 @@
 {
   "name": "sundrop",
-  "version": "0.0.1",
+  "version": "0.0.1-alpha.0",
   "description": "A 2d javascript game engine",
   "main": "./build/index.mjs",
   "directories": {
@@ -15,7 +15,8 @@
   },
   "keywords": [
     "game",
-    "game-engine"
+    "game-engine",
+    "testing"
   ],
   "author": "GappleCider",
   "license": "MIT",
