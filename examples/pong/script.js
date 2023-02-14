@@ -1,4 +1,4 @@
-import * as SUN from "../../build/index.mjs";
+import * as SUN from "../../build/index.js";
 
 SUN.init({ backgroundColor: "black" });
 
