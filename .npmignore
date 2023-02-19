@@ -6,3 +6,5 @@
 .gitpod.yml
 
 examples/
+
+tests/

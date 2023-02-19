@@ -2,7 +2,7 @@
   "name": "sundrop",
   "version": "0.0.1-alpha.1",
   "description": "A 2d javascript game engine",
-  "main": "./build/index.mjs",
+  "main": "./build/sundrop.js",
   "directories": {
     "example": "examples"
   },
