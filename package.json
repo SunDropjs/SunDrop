@@ -3,8 +3,16 @@
   "version": "0.0.1-alpha.1",
   "description": "A 2d javascript game engine",
   "main": "./build/sundrop.js",
+  "type": "module",
   "directories": {
     "example": "examples"
+  },
+  "module": "./build/sundrop.module.js",
+  "exports": {
+    ".": {
+      "import": "./build/sundrop.module.js",
+      "require": "./build/sundrop.cjs"
+    }
   },
   "scripts": {
     "test": "echo test"
