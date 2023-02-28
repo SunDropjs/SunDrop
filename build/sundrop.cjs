@@ -245,6 +245,62 @@ class Renderer {
 
       }
       
+      if ( this.objs[i].type === 'line' ) {
+
+          if ( this.objs[i].props.visible ) {
+
+            this.objs[i].props.stroke.color!= undefined
+            ? ctx.strokeStyle = this.objs[i].props.stroke.color
+            : ctx.strokeStyle = 'black'
+
+            this.objs[i].props.stroke.width!= undefined
+            ? ctx.lineWidth = this.objs[i].props.stroke.width 
+            : ctx.lineWidth = 1
+
+            ctx.beginPath()
+            ctx.moveTo( this.objs[i].startPoint.x, this.objs[i].startPoint.y );
+            ctx.lineTo( this.objs[i].endPoint.x, this.objs[i].endPoint.y );
+            ctx.closePath()
+            ctx.stroke()
+          
+          }
+
+        }
+
+        if ( this.objs[i].type === 'circle' ) {
+
+          if ( this.objs[i].props.visible ) {
+            ctx.beginPath()
+            ctx.arc( 
+              this.objs[i].pos.x, 
+              this.objs[i].y, 
+              this.objs[i].radius, 
+              0, 
+              Math.PI * 2
+            )
+            ctx.closePath()
+            if ( this.objs[i].props.drawStyle === 'fill' ) {
+
+              ctx.fill()
+            
+            }
+            if ( this.objs[i].props.drawStyle === 'stroke' ) {
+
+              this.objs[i].props.stroke.color = undefined
+              ? ctx.strokeStyle = this.objs[i].props.stroke.color
+              : ctx.strokeStyle = 'black'
+
+              this.objs[i].props.stroke.width!= undefined
+              ? ctx.lineWidth = this.objs[i].props.stroke.width
+              : ctx.lineWidth = 1
+
+              ctx.stroke()
+
+            }
+
+          }
+
+        }
 
     }
 
