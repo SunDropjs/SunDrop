@@ -499,5 +499,9 @@ function checkCollision(shape1, shape2) {
   exports.Circle = Circle
   exports.Texture = Texture
   exports.Renderer = Renderer
+  exports.lerp = lerp
+  exports.randomInt = randomInt
+  exports.randomFloat = randomFloat
+  exports.checkCollision = checkCollision
 
 });
