@@ -1,4 +1,8 @@
 
 .vscode/
 
-.gitpod.yml
+.gitpod.
+
+node_modules/
+
+package-lock.json
