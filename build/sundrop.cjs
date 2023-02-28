@@ -325,6 +325,19 @@ class Renderer {
     return this.objs.indexOf( obj )
 
   }
+  update() {
+
+    for ( let i = 0; i < this.objs.length; i++ ) {
+
+      if ( this.objs[i].type === 'box' ) {
+
+        this.objs[i].update( )
+
+      }
+
+    }
+
+  }
 
 }
 
