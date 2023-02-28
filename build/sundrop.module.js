@@ -76,10 +76,10 @@ class Line {
 
 }
 
-class Box {
+class Box{
 
   constructor( x, y, width, height ) {
-        
+
     this.pos = {
       x: x,
       y: y
@@ -87,6 +87,15 @@ class Box {
     this.width = width
     this.height = height
 
+    this.props = {
+
+      visible: true
+
+    }
+
+    this.tags = {
+
+    }
     this.class = 'polygon'
     this.type = 'box'
 
@@ -182,14 +191,7 @@ class Renderer {
       
     this.objs = []
     
-    ctx.fillStyle = 'black'
-
-    //this.render()
-
   }
-
-
-
 
   render() {
 
@@ -204,6 +206,7 @@ class Renderer {
       if ( this.objs[i].class === 'polygon' ) {
 
         if ( this.objs[i].props.visible ) {
+
           ctx.beginPath()
           ctx.moveTo( this.objs[i].polygon[0].x, this.objs[i].polygon[0].y )
           for ( let j = 0; j < this.objs[i].polygon.length - 1; j++ ) {
@@ -221,6 +224,14 @@ class Renderer {
           }
           else if ( this.objs[i].props.drawStyle === 'stroke' ) {
 
+            this.props.stroke.color!= undefined
+            ? ctx.strokeStyle = this.props.stroke.color
+            : ctx.strokeStyle = 'black'
+
+            this.props.stroke.width!= undefined
+            ? ctx.lineWidth = this.props.stroke.width
+            : ctx.lineWidth = 1
+
             ctx.stroke()
 
           }
@@ -232,6 +243,14 @@ class Renderer {
       if ( this.objs[i].type === 'line' ) {
 
         if ( this.objs[i].props.visible ) {
+
+          this.objs[i].props.stroke.color!= undefined
+          ?  ctx.strokeStyle = this.objs[i].props.stroke.color
+          :  ctx.strokeStyle = 'black'
+
+          this.objs[i].props.stroke.width!= undefined
+          ? ctx.lineWidth = this.objs[i].props.stroke.width
+          : ctx.lineWidth = 1
 
           ctx.beginPath()
           ctx.moveTo( this.objs[i].startPoint.x, this.objs[i].startPoint.y )
@@ -262,6 +281,14 @@ class Renderer {
 
           }
           if ( this.objs[i].props.drawStyle === 'stroke' ) {
+
+            this.objs[i].props.stroke.color!= undefined
+            ? ctx.strokeStyle = this.objs[i].props.stroke.color
+            : ctx.strokeStyle = 'black'
+
+            this.objs[i].props.stroke.width!= undefined
+            ? ctx.lineWidth = this.objs[i].props.stroke.width
+            : ctx.lineWidth = 1
 
             ctx.stroke()
 

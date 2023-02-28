@@ -35,7 +35,7 @@ class Vec2 {
 
 class Polygon {
 
-  constructor( points = [], props ) {
+  constructor( points = [] ) {
 
     this.props = {
       visible: true
@@ -78,7 +78,7 @@ class Line {
 
 }
 
-class Box extends Polygon {
+class Box {
 
   constructor( x, y, width, height ) {
 
@@ -91,7 +91,18 @@ class Box extends Polygon {
     this.width = width
     this.height = height
 
+    this.props = {
+
+      visible: true
+
+    }
+
+    this.tags = {
+
+    }
+
     this.type = 'box'
+    this.class = 'polygon'
 
     this.polygon = this.createPolygon( )
   }
@@ -122,11 +133,18 @@ class Box extends Polygon {
 
     return points
   }
+
+  update() {
+
+    this.polygon = this.createPolygon()
+
+  }
+
 }
 
 class Circle {
 
-  constructor( x, y, radius) {
+  constructor( x, y, radius ) {
 
     this.pos = {
       x: x,
@@ -187,41 +205,46 @@ class Renderer {
 
     for ( let i = 0; i < this.objs.length; i++ ) {
 
-      if ( this.objs[i].props.drawStyle === 'fill' ) {
-        this.objs[i].props.color != undefined
-        ? ctx.fillStyle = this.objs[i].props.color
-        : ctx.fillStyle = 'black'
-      }
-      else if ( this.objs[i].props.drawStyle === 'stroke' ) {
-        this.objs[i].props.color != undefined
-        ? ctx.strokeStyle = this.objs[i].props.color + ' ' + this.objs[i].props.strokeWidth + 'px'
-        : ctx.strokeStyle = 'black'
-      }
+      this.objs[i].props.color != undefined
+      ? ctx.fillStyle = this.objs[i].props.color
+      : ctx.fillStyle = 'black'
 
       if ( this.objs[i].class === 'polygon' ) {
 
-        ctx.beginPath()
-        ctx.moveTo( this.objs[i].polygon[0].x, this.objs[i].polygon[0].y )
-        for ( let j = 1; j < this.objs[i].polygon.length; j++ ) {
+        if ( this.objs[i].props.visible ) {
+          ctx.beginPath()
+          ctx.moveTo( this.objs[i].polygon[0].x, this.objs[i].polygon[0].y )
+          for ( let j = 1; j < this.objs[i].polygon.length; j++ ) {
 
-          ctx.lineTo( this.objs[i].polygon[j].x, this.objs[i].polygon[j].y )
+            ctx.lineTo( this.objs[i].polygon[j].x, this.objs[i].polygon[j].y )
 
-        }
-        ctx.lineTo( this.objs[i].polygon[0].x, this.objs[i].polygon[0].y )
-        ctx.closePath()
+          }
+          ctx.lineTo( this.objs[i].polygon[0].x, this.objs[i].polygon[0].y )
+          ctx.closePath()
 
-        if ( this.objs[i].props.drawStyle === 'fill' ) {
+          if ( this.objs[i].props.drawStyle === 'fill' ) {
 
-          ctx.fill()
+            ctx.fill()
 
-        }
-        else if ( this.objs[i].props.drawStyle === 'stroke' ) {
+          }
+          else if ( this.objs[i].props.drawStyle === 'stroke' ) {
 
-          ctx.stroke()
+            this.objs[i].props.stroke.color!= undefined
+            ? ctx.strokeStyle = this.objs[i].props.stroke.color
+            : ctx.strokeStyle = 'black'
+
+            this.objs[i].props.stroke.width!= undefined
+            ? ctx.lineWidth = this.objs[i].props.stroke.width
+            : ctx.lineWidth = 1
+
+            ctx.stroke()
+
+          }
 
         }
 
       }
+      
 
     }
 

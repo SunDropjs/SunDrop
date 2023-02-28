@@ -9,8 +9,6 @@
 })(this, function (exports) {
   "use strict";
 
-  //Object.defineProperty( exports, "__esModule", { value: true } );
-
   const canvas = document.createElement( "canvas" );
   const ctx = canvas.getContext( "2d" );
   const _canvasWidth = canvas.width = window.innerWidth;
@@ -46,7 +44,7 @@
 
   class Polygon {
 
-    constructor( points = [], props ) {
+    constructor( points = [] ) {
 
       this.props = {
         visible: true
@@ -89,11 +87,9 @@
 
   }
 
-  class Box extends Polygon {
+  class Box {
 
     constructor( x, y, width, height ) {
-
-        super ( [] )
         
         this.pos = {
             x: x,
@@ -102,6 +98,17 @@
         this.width = width
         this.height = height
 
+        this.props = {
+
+          visible: true
+
+        }
+
+        this.tags = {
+
+        }
+
+        this.class = 'polygon'
         this.type = 'box'
 
         this.polygon = this.createPolygon( )
@@ -132,6 +139,12 @@
         })
 
         return points
+    }
+
+    update() {
+
+      this.polygon = this.createPolygon( )
+
     }
   }
 
@@ -198,18 +211,12 @@
 
       for ( let i = 0; i < this.objs.length; i++ ) {
 
-        if ( this.objs[i].props.drawStyle === 'fill' ) {
-          this.objs[i].props.color != undefined
-          ? ctx.fillStyle = this.objs[i].props.color
-          : ctx.fillStyle = 'black'
-        }
-        else if ( this.objs[i].props.drawStyle === 'stroke' ) {
-          this.objs[i].props.color != undefined
-          ? ctx.strokeStyle = this.objs[i].props.color + ' ' + this.objs[i].props.strokeWidth + 'px'
-          : ctx.strokeStyle = 'black'
-        }
+        this.objs[i].props.color != undefined
+        ? ctx.fillStyle = this.objs[i].props.color
+        : ctx.fillStyle = 'black'
 
         if ( this.objs[i].class === 'polygon' ) {
+          
           if ( this.objs[i].props.visible ) {
 
             ctx.beginPath()
@@ -229,6 +236,14 @@
             }
             else if ( this.objs[i].props.drawStyle === 'stroke' ) {
 
+              this.objs[i].props.stroke.color = undefined
+              ? ctx.strokeStyle = this.objs[i].props.stroke.color
+              : ctx.strokeStyle = 'black'
+
+              this.objs[i].props.stroke.width!= undefined
+              ? ctx.lineWidth = this.objs[i].props.stroke.width
+              : ctx.lineWidth = 1
+
               ctx.stroke()
 
             }
@@ -240,6 +255,14 @@
         if ( this.objs[i].type === 'line' ) {
 
           if ( this.objs[i].props.visible ) {
+
+            this.objs[i].props.stroke.color!= undefined
+            ? ctx.strokeStyle = this.objs[i].props.stroke.color
+            : ctx.strokeStyle = 'black'
+
+            this.objs[i].props.stroke.width!= undefined
+            ? ctx.lineWidth = this.objs[i].props.stroke.width 
+            : ctx.lineWidth = 1
 
             ctx.beginPath()
             ctx.moveTo( this.objs[i].startPoint.x, this.objs[i].startPoint.y );
@@ -269,6 +292,14 @@
             
             }
             if ( this.objs[i].props.drawStyle === 'stroke' ) {
+
+              this.objs[i].props.stroke.color = undefined
+              ? ctx.strokeStyle = this.objs[i].props.stroke.color
+              : ctx.strokeStyle = 'black'
+
+              this.objs[i].props.stroke.width!= undefined
+              ? ctx.lineWidth = this.objs[i].props.stroke.width
+              : ctx.lineWidth = 1
 
               ctx.stroke()
 
@@ -300,6 +331,19 @@
 
       return this.objs.indexOf( obj )
 
+    }
+    update() {
+
+      for ( let i = 0; i < this.objs.length; i++ ) {
+
+        if ( this.objs[i].type === 'box' ) {
+
+          this.objs[i].update( )
+
+        }
+
+      }
+      
     }
 
   }

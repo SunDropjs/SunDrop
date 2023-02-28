@@ -1,8 +1,8 @@
-import * as SUN from "../../build/index.js";
+import * as SUN from "../../build/sundrop.module.js";
 
-SUN.init({ backgroundColor: "black" });
+SUN.setCanvasColor('black')
 
-const renderer = new SUN.Renderer();
+const renderer = new SUN.Renderer()
 
 const paddle = new SUN.Box(
   10,
@@ -20,13 +20,13 @@ const paddle2 = new SUN.Box(
 
 paddle.props = {
   visible: true,
-  style: "fill",
+  drawStyle: "fill",
   color: "white",
 };
 
 paddle2.props = {
   visible: true,
-  style: "fill",
+  drawStyle: "fill",
   color: "white",
 };
 
@@ -34,7 +34,7 @@ const ball = new SUN.Circle(window.innerWidth / 2, window.innerHeight / 2, 10);
 
 ball.props = {
   visible: true,
-  style: "fill",
+  drawStyle: "fill",
   color: "white",
 };
 
@@ -66,8 +66,8 @@ function animate() {
     addY = -addY;
   }
   if (ball.pos.x <= paddle.pos.x || ball.pos.x >= paddle2.pos.x) {
-    ball.pos.x = SUN.random(0, window.innerWidth);
-    ball.pos.y = SUN.random(0, window.innerHeight);
+    ball.pos.x = SUN.randomInt(0, window.innerWidth);
+    ball.pos.y = SUN.randomInt(0, window.innerHeight);
   }
   let paddleCollide = SUN.checkCollision(ball, paddle);
   let paddleCollide2 = SUN.checkCollision(ball, paddle2);
@@ -83,9 +83,9 @@ function animate() {
   ball.pos.y += addY;
 
   if (ball.pos.y > paddle2.pos.y) {
-    paddle2.pos.y += 4 + SUN.random(4, 8)
+    paddle2.pos.y += 4 + SUN.randomInt(4, 8)
   } else if (ball.pos.y < paddle2.pos.y) {
-    paddle2.pos.y -= 4 + SUN.random(4, 8)
+    paddle2.pos.y -= 4 + SUN.randomInt(4, 8)
   }
 
   document.addEventListener("mousemove", (e) => {
