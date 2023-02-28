@@ -68,8 +68,8 @@ function animate() {
     addY = -addY;
   }
   if (ball.pos.x <= paddle.pos.x || ball.pos.x >= paddle2.pos.x) {
-    ball.pos.x = SUN.randomInt(0, window.innerWidth);
-    ball.pos.y = SUN.randomInt(0, window.innerHeight);
+    ball.pos.x = window.innerWidth / 2
+    ball.pos.y = window.innerHeight / 2;
   }
   let paddleCollide = SUN.checkCollision(ball, paddle);
   let paddleCollide2 = SUN.checkCollision(ball, paddle2);
@@ -85,9 +85,9 @@ function animate() {
   ball.pos.y += addY;
 
   if (ball.pos.y > paddle2.pos.y) {
-    paddle2.pos.y += 4 + SUN.randomInt(4, 8)
+    paddle2.pos.y += SUN.randomInt(6, 8)
   } else if (ball.pos.y < paddle2.pos.y) {
-    paddle2.pos.y -= 4 + SUN.randomInt(4, 8)
+    paddle2.pos.y -= SUN.randomInt(6, 8)
   }
 
   document.addEventListener("mousemove", (e) => {
