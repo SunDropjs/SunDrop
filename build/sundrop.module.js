@@ -1,22 +1,3 @@
-const canvas = document.createElement( "canvas" );
-const ctx = canvas.getContext( "2d" );
-const _canvasWidth = canvas.width = window.innerWidth;
-const _canvasHeight = canvas.height = window.innerHeight;
-
-function setCanvasColor( color ) {
-
-  canvas.style.backgroundColor = color;
-
-}
-
-function setCanvasAlpha( alpha ) {
-
-  canvas.style.opacity = alpha;
-
-}
-
-document.body.appendChild( canvas );
-
 class Vec2 {
 
   constructor( x, y ) {
@@ -190,49 +171,54 @@ class Renderer {
   constructor() {
       
     this.objs = []
+
+    this.domElement = document.createElement('canvas')
+    this.ctx = this.domElement.getContext('2d')
+    this._canvasWidth = this.domElement.width = window.innerWidth
+    this._canvasHeight = this.domElement.height = window.innerHeight
     
   }
 
   render() {
 
-    ctx.clearRect(0, 0, _canvasWidth, _canvasHeight)
+    this.ctx.clearRect(0, 0, this._canvasWidth, this._canvasHeight)
 
     for ( let i = 0; i < this.objs.length; i++ ) {
 
       this.objs[i].props.color != undefined
-      ? ctx.fillStyle = this.objs[i].props.color
-      : ctx.fillStyle = 'black'
+      ? this.ctx.fillStyle = this.objs[i].props.color
+      : this.ctx.fillStyle = 'black'
 
       if ( this.objs[i].class === 'polygon' ) {
 
         if ( this.objs[i].props.visible ) {
 
-          ctx.beginPath()
-          ctx.moveTo( this.objs[i].polygon[0].x, this.objs[i].polygon[0].y )
+          this.ctx.beginPath()
+          this.ctx.moveTo( this.objs[i].polygon[0].x, this.objs[i].polygon[0].y )
           for ( let j = 0; j < this.objs[i].polygon.length - 1; j++ ) {
 
-            ctx.lineTo( this.objs[i].polygon[j + 1].x, this.objs[i].polygon[j + 1].y )
+            this.ctx.lineTo( this.objs[i].polygon[j + 1].x, this.objs[i].polygon[j + 1].y )
 
           }
-          ctx.lineTo( this.objs[i].polygon[0].x, this.objs[i].polygon[0].y )
-          ctx.closePath()
+          this.ctx.lineTo( this.objs[i].polygon[0].x, this.objs[i].polygon[0].y )
+          this.ctx.closePath()
 
           if ( this.objs[i].props.drawStyle === 'fill' ) {
 
-            ctx.fill()
+            this.ctx.fill()
 
           }
           else if ( this.objs[i].props.drawStyle === 'stroke' ) {
 
             this.props.stroke.color!= undefined
-            ? ctx.strokeStyle = this.props.stroke.color
-            : ctx.strokeStyle = 'black'
+            ? this.ctx.strokeStyle = this.props.stroke.color
+            : this.ctx.strokeStyle = 'black'
 
             this.props.stroke.width!= undefined
-            ? ctx.lineWidth = this.props.stroke.width
-            : ctx.lineWidth = 1
+            ? this.ctx.lineWidth = this.props.stroke.width
+            : this.ctx.lineWidth = 1
 
-            ctx.stroke()
+            this.ctx.stroke()
 
           }
 
@@ -245,18 +231,18 @@ class Renderer {
         if ( this.objs[i].props.visible ) {
 
           this.objs[i].props.stroke.color!= undefined
-          ?  ctx.strokeStyle = this.objs[i].props.stroke.color
-          :  ctx.strokeStyle = 'black'
+          ?  this.ctx.strokeStyle = this.objs[i].props.stroke.color
+          :  this.ctx.strokeStyle = 'black'
 
           this.objs[i].props.stroke.width!= undefined
-          ? ctx.lineWidth = this.objs[i].props.stroke.width
-          : ctx.lineWidth = 1
+          ? this.ctx.lineWidth = this.objs[i].props.stroke.width
+          : this.ctx.lineWidth = 1
 
-          ctx.beginPath()
-          ctx.moveTo( this.objs[i].startPoint.x, this.objs[i].startPoint.y )
-          ctx.lineTo( this.objs[i].endPoint.x, this.objs[i].endPoint.y )
-          ctx.closePath()
-          ctx.stroke()
+          this.ctx.beginPath()
+          this.ctx.moveTo( this.objs[i].startPoint.x, this.objs[i].startPoint.y )
+          this.ctx.lineTo( this.objs[i].endPoint.x, this.objs[i].endPoint.y )
+          this.ctx.closePath()
+          this.ctx.stroke()
 
         }
 
@@ -266,31 +252,31 @@ class Renderer {
         
         if ( this.objs[i].props.visible ) {
           
-          ctx.beginPath()
-          ctx.arc( 
+          this.ctx.beginPath()
+          this.ctx.arc( 
             this.objs[i].pos.x, 
             this.objs[i].pos.y, 
             this.objs[i].radius, 
             0, 
             Math.PI * 2
           )
-          ctx.closePath()
+          this.ctx.closePath()
           if ( this.objs[i].props.drawStyle === 'fill' ) {
 
-            ctx.fill()
+            this.ctx.fill()
 
           }
           if ( this.objs[i].props.drawStyle === 'stroke' ) {
 
             this.objs[i].props.stroke.color!= undefined
-            ? ctx.strokeStyle = this.objs[i].props.stroke.color
-            : ctx.strokeStyle = 'black'
+            ? this.ctx.strokeStyle = this.objs[i].props.stroke.color
+            : this.ctx.strokeStyle = 'black'
 
             this.objs[i].props.stroke.width!= undefined
-            ? ctx.lineWidth = this.objs[i].props.stroke.width
-            : ctx.lineWidth = 1
+            ? this.ctx.lineWidth = this.objs[i].props.stroke.width
+            : this.ctx.lineWidth = 1
 
-            ctx.stroke()
+            this.ctx.stroke()
 
           }
 
@@ -332,6 +318,23 @@ class Renderer {
       }
 
     }
+
+  }
+
+  setSize( width, height ) {
+
+    this._canvasWidth = this.domElement.width = width
+    this._canvasHeight = this.domElement.height = height
+
+  }
+  setColor( color ) {
+
+    this.domElement.style.backgroundColor = color
+
+  }
+  setAlpha( alpha ) {
+
+    this.domElement.style.opacity = alpha
 
   }
 
@@ -479,4 +482,4 @@ function checkCollision(shape1, shape2) {
 
 }
 
-export {canvas, ctx, _canvasWidth, _canvasHeight, setCanvasColor, setCanvasAlpha, Vec2, Polygon, Line, Box, Circle, Texture, Renderer, lerp, randomInt, randomFloat, checkCollision}
+export { Vec2, Polygon, Line, Box, Circle, Texture, Renderer, lerp, randomInt, randomFloat, checkCollision}

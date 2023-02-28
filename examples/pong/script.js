@@ -1,8 +1,10 @@
 import * as SUN from "../../build/sundrop.module.js";
 
-SUN.setCanvasColor('black')
-
 const renderer = new SUN.Renderer()
+
+renderer.setColor("black")
+
+document.body.appendChild(renderer.domElement)
 
 const paddle = new SUN.Box(
   10,
