@@ -1,19 +1,17 @@
 {
   "name": "sundrop",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A 2d javascript game engine",
   "main": "./build/sundrop.js",
-  "type": "module",
   "directories": {
     "example": "examples"
   },
   "module": "./build/sundrop.module.js",
   "exports": {
-    ".": {
-      "import": "./build/sundrop.module.js",
-      "require": "./build/sundrop.cjs"
-    }
+    "import": "./build/sundrop.module.js",
+    "require": "./build/sundrop.cjs"
   },
+  "type": "module",
   "scripts": {
     "start": "npm run dev",
     "test": "npm run lint && npm run test-unit",
@@ -43,7 +41,9 @@
   "keywords": [
     "game",
     "game-engine",
-    "testing"
+    "testing",
+    "2d",
+    "2d-graphics"
   ],
   "author": "GappleCider",
   "license": "MIT",
@@ -72,7 +72,6 @@
     "rollup-plugin-visualizer": "^5.9.0",
     "servez": "^1.14.1"
   },
-  "sideEffects": false,
   "files": [
     "build/sundrop.js",
     "build/sundrop.cjs",
@@ -81,20 +80,5 @@
     "LICENSE",
     "CODE_OF_CONDUCT.md",
     "README.md"
-  ],
-  "overrides": {
-    "jpeg-js": "^0.4.4"
-  },
-  "jspm": {
-    "files": [
-      "build/sundrop.cjs",
-      "build/sundrop.js",
-      "build/sundrop.module.js",
-      "package.json",
-      "LICENSE",
-      "CODE_OF_CONDUCT.md",
-      "README.md"
-    ],
-    "directories": {}
-  }
+  ]
 }
