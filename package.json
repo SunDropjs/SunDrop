@@ -14,11 +14,11 @@
   "type": "module",
   "scripts": {
     "start": "npm run dev",
+    "test": "echo message from test\n"
     "build": "rollup -c utils/build/rollup.config.js",
     "build-module": "rollup -c utils/build/rollup.config.js --configOnlyModule",
     "dev": "concurrently --names \"ROLLUP,HTTP\" -c \"bgBlue.bold,bgGreen.bold\" \"rollup -c utils/build/rollup.config.js -w -m inline\" \"servez -p 8080 --ssl\"",
-    "lint-fix": "npm run lint-core -- --fix && npm run lint-addons -- --fix && npm run lint-examples -- --fix && npm run lint-docs -- --fix && npm run lint-editor -- --fix && npm run lint-manual -- --fix && npm run lint-test -- --fix && npm run lint-utils -- --fix"
-  },
+  }
   "repository": {
     "type": "git",
     "url": "git+https://github.com/GappleCider/SunDrop.git"
