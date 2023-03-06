@@ -61,6 +61,7 @@
     "build/sundrop.js",
     "build/sundrop.cjs",
     "build/sundrop.module.js",
+    "build/sundrop.min.js",
     "package.json",
     "LICENSE",
     "CODE_OF_CONDUCT.md",
