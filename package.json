@@ -66,8 +66,5 @@
     "LICENSE",
     "CODE_OF_CONDUCT.md",
     "README.md"
-  ],
-  "dependencies": {
-    "acorn-private-class-elements": "^1.0.0"
-  }
+  ]
 }
