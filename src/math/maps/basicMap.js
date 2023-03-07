@@ -10,13 +10,17 @@ class BasicMap {
         this.row = this.map[i];
 
         for (let j = 0; j < this.row.length; j++) {
-          const cell = this.row[j];
+          const text = this.row[j];
 
-          if (cell != "") {
-            processedMap.push([
-              cell,
-              { x: j * Number(this.value[0]), y: i * Number(this.value[2]) },
-            ]);
+          for (let k = 0; k < text.length; k++) {
+            const cell = text[k];
+
+            if (cell != "") {
+              processedMap.push([
+                cell,
+                { x: j * Number(this.value[0]), y: i * Number(this.value[2]) },
+              ]);
+            }
           }
         }
       }
@@ -26,4 +30,4 @@ class BasicMap {
   }
 }
 
-export { BasicMap }
+export { BasicMap };
