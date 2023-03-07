@@ -1,4 +1,4 @@
-import * as SUN from "../../build/sundrop.module.js";
+import * as SUN from "../../build/sundrop.module.js"
 
 const renderer = new SUN.Renderer()
 
@@ -85,9 +85,9 @@ function animate() {
   ball.pos.y += addY;
 
   if (ball.pos.y > paddle2.pos.y) {
-    paddle2.pos.y += SUN.randomInt(6, 8)
+    paddle2.pos.y += SUN.randomInt(7, 8)
   } else if (ball.pos.y < paddle2.pos.y) {
-    paddle2.pos.y -= SUN.randomInt(6, 8)
+    paddle2.pos.y -= SUN.randomInt(7, 8)
   }
 
   document.addEventListener("mousemove", (e) => {
