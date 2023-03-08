@@ -1,6 +1,6 @@
 <h1 align="center">SunDrop</h1><p align="center"><img style="width:200px;height:200px" src="https://github.com/GappleCider/SunDrop/blob/main/Logo.PNG"></p>
 
-## SunDrop is currently a Javascript game engine
+## SunDrop is a Javascript game engine
 
 SunDrop is based on Phaser.js and Three.js 
 
