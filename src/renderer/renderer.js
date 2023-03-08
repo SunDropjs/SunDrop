@@ -90,6 +90,24 @@ class Renderer {
           }
         }
       }
+      if (this.objs[i].type === "map") {
+        for (let j = 0; j < this.objs[i].processedMap.length; j++) {
+          const char = this.objs[i].processedMap[j];
+
+          char.props.color != undefined
+            ? (this.ctx.fillStyle = char.props.color)
+            : (this.ctx.fillStyle = "black");
+
+          this.ctx.beginPath();
+          this.ctx.moveTo(char.polygon[0].x, char.polygon[0].y);
+          for (let k = 0; k < char.polygon.length - 1; k++) {
+            this.ctx.lineTo(char.polygon[k + 1].x, char.polygon[k + 1].y);
+          }
+          this.ctx.lineTo(char.polygon[0].x, char.polygon[0].y);
+          this.ctx.closePath();
+          this.ctx.fill();
+        }
+      }
     }
   }
   add(obj) {

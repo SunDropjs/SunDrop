@@ -95,6 +95,24 @@ class Renderer {
           }
         }
       }
+      if (this.objs[i].type === "map") {
+        for (let j = 0; j < this.objs[i].processedMap.length; j++) {
+          const char = this.objs[i].processedMap[j];
+
+          char.props.color != undefined
+            ? (this.ctx.fillStyle = char.props.color)
+            : (this.ctx.fillStyle = "black");
+
+          this.ctx.beginPath();
+          this.ctx.moveTo(char.polygon[0].x, char.polygon[0].y);
+          for (let k = 0; k < char.polygon.length - 1; k++) {
+            this.ctx.lineTo(char.polygon[k + 1].x, char.polygon[k + 1].y);
+          }
+          this.ctx.lineTo(char.polygon[0].x, char.polygon[0].y);
+          this.ctx.closePath();
+          this.ctx.fill();
+        }
+      }
     }
   }
   add(obj) {
@@ -381,17 +399,12 @@ function checkCollision(shape1, shape2) {
   }
 }
 
-class BasicMesh {
-    constructor(map) {
-        this.map = map;
-    }
-}
-
 class BasicMap {
   constructor(map, key, value = "1x1") {
     this.map = map;
     this.key = key;
     this.value = value;
+    this.type = "map";
 
     this.processMap = () => {
       const processedMap = [];
@@ -404,11 +417,33 @@ class BasicMap {
           for (let k = 0; k < text.length; k++) {
             const cell = text[k];
 
-            if (cell != "") {
-              processedMap.push([
-                cell,
-                { x: j * Number(this.value[0]), y: i * Number(this.value[2]) },
-              ]);
+            if (cell != " ") {
+              const x = k * Number(this.value[0]);
+              const y = i * Number(this.value[2]);
+              const width = Number(this.value[0]);
+              const height = Number(this.value[2]);
+              const polygon = this.generatePolygon(x, y, width, height);
+              let props = undefined;
+              for (let i = 0; i < Object.keys(this.key).length; i++) {
+                if (this.key[i] == cell) {
+                  props = this.key[i];
+                } else if (i == Object.keys(this.key).length - 1) {
+                  console.error("Key not found");
+                }
+              }
+
+              processedMap.push[
+                ({
+                  pos: {
+                    x: x,
+                    y: y,
+                  },
+                  width: width,
+                  height: height,
+                  polygon: polygon,
+                  props: props,
+                })
+              ];
             }
           }
         }
@@ -417,7 +452,32 @@ class BasicMap {
     };
     this.processedMap = this.processMap();
   }
+  generatePolygon(x, y, width, height) {
+    const points = [];
+
+    points.push({
+      x: x - width / 2,
+      y: y - height / 2,
+    });
+
+    points.push({
+      x: x + width / 2,
+      y: y - height / 2,
+    });
+
+    points.push({
+      x: x + width / 2,
+      y: y + height / 2,
+    });
+
+    points.push({
+      x: x - width / 2,
+      y: y + height / 2,
+    });
+
+    return points;
+  }
 }
 
-export { BasicMap, BasicMesh, Box, Circle, Line, Polygon, Renderer, Vec2, checkCollision, lerp, randomFloat, randomInt };
+export { BasicMap, Box, Circle, Line, Polygon, Renderer, Vec2, checkCollision, lerp, randomFloat, randomInt };
 //# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoic3VuZHJvcC5tb2R1bGUuanMiLCJzb3VyY2VzIjpbXSwic291cmNlc0NvbnRlbnQiOltdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiIn0=

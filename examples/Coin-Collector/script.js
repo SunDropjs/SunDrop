@@ -6,6 +6,22 @@ renderer.setColor('#47f6ff')
 
 document.body.appendChild(renderer.domElement)
 
+const map = new SUN.BasicMap([
+    ['               '],
+    ['               '],
+    ['               '],
+    ['xxxxxxxxxxxxxxx'],
+    ['xxxxxxxxxxxxxxx'],
+],
+{
+    "x": {
+        color: "green"
+    }
+},
+'5x5')
+
+renderer.add(map)
+
 function animate() {
     renderer.render();
     renderer.update();

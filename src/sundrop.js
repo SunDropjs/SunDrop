@@ -5,5 +5,4 @@ export { Box } from './geometry/box.js';
 export { Circle } from './geometry/circle.js';
 export { randomInt, randomFloat, lerp } from "./utils.js";
 export { checkCollision } from "./physics/collisions.js";
-export { BasicMesh } from './geometry/meshs/basicMesh.js'
 export { BasicMap } from './math/maps/basicMap.js'
