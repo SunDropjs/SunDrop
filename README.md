@@ -1,16 +1,16 @@
-# SunDrop
+<h1 align="center">SunDrop</h1><p align="center"><img style="width:200px;height:200px" src="https://github.com/GappleCider/SunDrop/blob/main/Logo.PNG"></p>
 
-## Sundrop is currently a Javascript game engine  
+## SunDrop is currently a Javascript game engine
 
-Sundrop is based on Phaser.js and Three.js 
+SunDrop is based on Phaser.js and Three.js 
 
-**Use:**  
+**How to Install:**
 
 ```bash
 npm install sundrop
 ```  
 
-### When Installed  
+**When Installed:**
 
 ```javascript
 import * as SUN from "sundrop";
