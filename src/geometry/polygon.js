@@ -2,6 +2,7 @@ import { Vec2 } from "../sundrop.js";
 
 class Polygon {
   constructor(points = []) {
+    // points is an array of Vec2 objects
     this.props = {
       visible: true,
     };
@@ -11,6 +12,7 @@ class Polygon {
 
     this.class = "polygon";
 
+    // Generate a vector from points
     this.points.forEach((point) => {
       point.push(new Vec2(point[0], point[1]));
 
@@ -20,23 +22,19 @@ class Polygon {
 }
 
 class Line {
+  constructor(startX, startY, endX, endY) {
+    // StartX, StartY, EndX, EndY are put into a Vec2 object
+    this.startPoint = new Vec2(startX, startY);
+    this.endPoint = new Vec2(endX, endY);
 
-  constructor( startX, startY, endX, endY ) {
+    this.props = {
+      visible: true,
+    };
 
-      this.startPoint = new Vec2( startX, startY )
-      this.endPoint = new Vec2( endX, endY )
+    this.tags = {};
 
-      this.props = {
-        visible: true
-      }
-
-      this.tags = {
-
-      }
-
-      this.type = "line"
+    this.type = "line";
   }
-
 }
 
 export { Polygon, Line };

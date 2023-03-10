@@ -1,18 +1,5 @@
 import terser from "@rollup/plugin-terser"
 
-function addons() {
-  return {
-    transform(code) {
-      code = code.replace("build/sundrop.module.js", "src/sundrop.js");
-
-      return {
-        code: code,
-        map: null,
-      };
-    },
-  };
-}
-
 function header() {
   return {
     renderChunk(code) {
@@ -29,7 +16,7 @@ ${code}`;
 const builds = [
   {
     input: "src/sundrop.js",
-    plugins: [addons(), header(), terser()],
+    plugins: [header(), terser()],
     output: [
       {
         file: "build/sundrop.min.js",
@@ -40,7 +27,7 @@ const builds = [
   },
   {
     input: "src/sundrop.js",
-    plugins: [addons(), header()],
+    plugins: [header()],
     output: [
       {
         file: "build/sundrop.module.js",
@@ -50,7 +37,7 @@ const builds = [
   },
   {
     input: "src/sundrop.js",
-    plugins: [addons(), header()],
+    plugins: [header()],
     output: [
       {
         file: "build/sundrop.cjs",
@@ -62,7 +49,7 @@ const builds = [
   },
   {
     input: "src/sundrop.js",
-    plugins: [addons(), header()],
+    plugins: [header()],
     output: [
       {
         file: "build/sundrop.js",

@@ -68,8 +68,8 @@ function animate() {
     addY = -addY;
   }
   if (ball.pos.x <= paddle.pos.x || ball.pos.x >= paddle2.pos.x) {
-    ball.pos.x = window.innerWidth / 2
-    ball.pos.y = window.innerHeight / 2;
+    ball.pos.x = SUN.randomInt(0, window.innerWidth)
+    ball.pos.y = SUN.randomInt(0, window.innerHeight)
   }
   let paddleCollide = SUN.checkCollision(ball, paddle);
   let paddleCollide2 = SUN.checkCollision(ball, paddle2);

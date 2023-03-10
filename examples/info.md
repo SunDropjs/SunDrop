@@ -2,4 +2,6 @@
 
 ## The folder contains the following SUN projects
 
-### Pong
+**Pong**
+
+**Coin-Collector**

@@ -1,6 +1,6 @@
 {
   "name": "sundrop",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "A 2d javascript game engine",
   "main": "./build/sundrop.js",
   "directories": {
@@ -17,7 +17,7 @@
     "test": "echo message from test",
     "build": "rollup -c utils/build/rollup.config.js",
     "build-module": "rollup -c utils/build/rollup.config.js --configOnlyModule",
-    "dev": "concurrently --names \"ROLLUP,HTTP\" -c \"bgBlue.bold,bgGreen.bold\" \"rollup -c utils/build/rollup.config.js -w -m inline\" \"servez -p 8080 --ssl\""
+    "dev": "concurrently --names \"ROLLUP,HTTP\" -c \"bgBlue.bold,bgGreen.bold\" \"rollup -c utils/build/rollup.config.js -w -m inline\""
   },
   "repository": {
     "type": "git",
@@ -39,16 +39,10 @@
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^15.0.1",
     "@rollup/plugin-terser": "^0.4.0",
-    "chalk": "^5.2.0",
-    "concurrently": "^7.6.0",
-    "failonlyreporter": "^1.0.0",
-    "pixelmatch": "^5.3.0",
-    "puppeteer-core": "^19.7.3",
-    "qunit": "^2.19.4",
     "rollup": "^3.18.0",
     "rollup-plugin-filesize": "^10.0.0",
     "rollup-plugin-visualizer": "^5.9.0",
-    "servez": "^1.14.2"
+    "concurrently": "7.6.0"
   },
   "files": [
     "build/sundrop.js",

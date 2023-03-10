@@ -1,52 +1,62 @@
 class Vec2 {
   constructor(x = 0, y = 0) {
+    // X and Y
     this.x = x;
     this.y = y;
   }
   get xPos() {
-    return this.x
+    // Get X position
+    return this.x;
   }
   get yPos() {
-    return this.y
+    // Get Y position
+    return this.y;
   }
   set xPos(x) {
+    // Set X position
     this.x = x;
 
-    return this
+    return this;
   }
   set yPos(y) {
+    // Set Y position
     this.y = y;
 
-    return this
+    return this;
   }
   set(x, y) {
+    // Both X and Y
     this.x = x;
     this.y = y;
 
-    return this
+    return this;
   }
   setPostion(v) {
-    this.x = v
-    this.y = v
+    // set Both X and Y to the same value
+    this.x = v;
+    this.y = v;
 
-    return this
+    return this;
   }
   clone() {
+    // Create a new Vec2
     return this.constructor(this.x, this.y);
   }
   scale(s) {
+    // Scale both X and Y
     this.x *= s;
     this.y *= s;
 
-    return this
+    return this;
   }
   getPosition() {
+    // Get the position of the Vec2
     const pos = {
-        x: this.x,
-        y: this.y
-    }
+      x: this.x,
+      y: this.y,
+    };
 
-    return pos
+    return pos;
   }
 }
 
