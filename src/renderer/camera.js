@@ -1,17 +1,18 @@
-class Camera {
+
+class PerspectiveCamera2D {
   constructor(x = 0, y = 0) {
     this.pos = {
       x: x,
       y: y,
     };
   }
-  follow(target, offset = 0.5) {
-    this.pos.x = -target.pos.x + window.innerWidth / 2 + offset;
-    this.pos.y = -target.pos.y + window.innerHeight / 2 + offset;
-  }
-  setPos(x, y) {
+  setPos(x = 0, y = 0) {
     this.pos = { x: x, y: y };
+  }
+  scale(s = 0) {
+    this.pos.x *= s;
+    this.pos.y *= s;
   }
 }
 
-export { Camera }
+export { PerspectiveCamera2D }

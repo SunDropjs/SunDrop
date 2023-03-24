@@ -1,19 +1,19 @@
 import * as SUN from "../../build/sundrop.module.js"
 
-const renderer = new SUN.Renderer()
+const renderer = new SUN.BasicRenderer2D()
 
 renderer.setColor("black")
 
 document.body.appendChild(renderer.domElement)
 
-const paddle = new SUN.Box(
+const paddle = new SUN.BasicGeometry.Box2D(
   10,
   window.innerHeight / 2,
   10,
   window.innerHeight / 10
 );
 
-const paddle2 = new SUN.Box(
+const paddle2 = new SUN.BasicGeometry.Box2D(
   window.innerWidth - 10,
   window.innerHeight / 2,
   10,
@@ -32,7 +32,7 @@ paddle2.props = {
   color: "white",
 };
 
-const ball = new SUN.Circle(window.innerWidth / 2, window.innerHeight / 2, 10);
+const ball = new SUN.BasicGeometry.Circle2D(window.innerWidth / 2, window.innerHeight / 2, 10);
 
 ball.props = {
   visible: true,
@@ -40,7 +40,7 @@ ball.props = {
   color: "white",
 };
 
-const centerLine = new SUN.Line(
+const centerLine = new SUN.BasicGeometry.Line(
   window.innerWidth / 2,
   0,
   window.innerWidth / 2,

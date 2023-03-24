@@ -1,17 +1,19 @@
 {
   "name": "sundrop",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "A 2d javascript game engine",
   "main": "./build/sundrop.js",
   "directories": {
     "example": "examples"
   },
+  "type": "module",
   "module": "./build/sundrop.module.js",
   "exports": {
-    "import": "./build/sundrop.module.js",
-    "require": "./build/sundrop.cjs"
+    ".": {
+      "import": "./build/sundrop.module.js",
+      "require": "./build/sundrop.cjs"
+    }
   },
-  "type": "module",
   "scripts": {
     "start": "npm run dev",
     "test": "echo message from test",

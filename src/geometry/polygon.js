@@ -1,4 +1,6 @@
-import { Vec2 } from "../sundrop.js";
+import { Vec2 } from "../math/vector2.js";
+import { Box2D } from "./box.js";
+import { Circle2D } from "./circle.js";
 
 class Polygon {
   constructor(points = []) {
@@ -22,7 +24,7 @@ class Polygon {
 }
 
 class Line {
-  constructor(startX, startY, endX, endY) {
+  constructor(startX = 0, startY = 0, endX = 0, endY = 0) {
     // StartX, StartY, EndX, EndY are put into a Vec2 object
     this.startPoint = new Vec2(startX, startY);
     this.endPoint = new Vec2(endX, endY);
@@ -37,4 +39,4 @@ class Line {
   }
 }
 
-export { Polygon, Line };
+export { Polygon, Line, Box2D, Circle2D };

@@ -1,5 +1,5 @@
-class Box {
-  constructor(x, y, width, height) {
+class Box2D {
+  constructor(x = 0, y = 0, width = 0, height = 0) {
     // Position in a dictionary
     this.pos = {
       x: x,
@@ -62,4 +62,4 @@ class Box {
   }
 }
 
-export { Box };
+export { Box2D };

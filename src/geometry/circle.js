@@ -1,5 +1,5 @@
-class Circle {
-  constructor(x, y, radius) {
+class Circle2D {
+  constructor(x = 0, y = 0, radius = 0) {
     // Postion 
     this.pos = {
       x: x,
@@ -21,4 +21,4 @@ class Circle {
   }
 }
 
-export { Circle };
+export { Circle2D };

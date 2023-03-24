@@ -1,6 +1,6 @@
 import { lerp } from "../utils.js";
 
-function checkCollision(shape1, shape2) {
+function checkCollision(shape1 = Object, shape2 = Object) {
   // If both shapes are circles
   if (shape1.type === "circle" && shape2.type === "circle") {
     // Calculate the distance between the centers
@@ -79,6 +79,8 @@ function checkCollision(shape1, shape2) {
       // collision is detected and possible
       return true;
     }
+    const sqrt = (distX - shape1.width / 2)^2 + (distY - shape1.height)^2
+    return sqrt <= (shape2.radius^2)
   }
 
   // Same as above but shape1 is a circle and shape2 is a polygon
@@ -96,7 +98,11 @@ function checkCollision(shape1, shape2) {
     if (distX <= shape2.width / 2 || distY <= shape2.height / 2) {
       return true;
     }
+
+    const sqrt = (distX - shape2.width)^2 + (distY - shape2.height)^2
+    return sqrt <= (shape1.radius^2)
   }
+  return console.error("shapes do not have a proper type or class")
 }
 
 export { checkCollision };
