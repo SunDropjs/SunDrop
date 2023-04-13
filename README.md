@@ -1,4 +1,4 @@
-<h1 align="center">SunDrop</h1><p align="center"><img style="width:150px;height:150px" src="https://github.com/GappleCider/SunDrop/blob/main/Logo.PNG"></p>
+<h1 align="center">SunDrop</h1><p align="center"><img style="width:150px;height:150px" src="https://github.com/GappleCider/SunDrop/blob/main/Logo.png"></p>
 
 <p align="center">
     <img src="https://img.shields.io/badge/version-0.0.7-blue"> 
