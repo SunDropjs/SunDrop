@@ -255,7 +255,7 @@ class BasicRenderer2D {
     this.objs = [];
     this.ctx.clearRect(0, 0, this._canvasWidth, this._canvasHeight);
   }
-  get(obj = Object) {
+  get Object(obj = Object) {
     return this.objs.indexOf(obj);
   }
   update() {
