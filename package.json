@@ -17,9 +17,10 @@
   "scripts": {
     "start": "npm run dev",
     "test": "echo message from test",
+    "docs": "jsdoc --configure .jsdoc.json --verbose",
     "build": "rollup -c utils/build/rollup.config.js",
     "build-module": "rollup -c utils/build/rollup.config.js --configOnlyModule",
-    "dev": "concurrently --names \"ROLLUP,HTTP\" -c \"bgBlue.bold,bgGreen.bold\" \"rollup -c utils/build/rollup.config.js -w -m inline\""
+    "dev": "concurrently --names \"ROLLUP,HTTP,JSDOC\" -c \"bgBlue.bold,bgGreen.bold\" \"rollup -c utils/build/rollup.config.js -w -m inline\""
   },
   "repository": {
     "type": "git",
@@ -41,10 +42,14 @@
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^15.0.1",
     "@rollup/plugin-terser": "^0.4.0",
+    "clean-jsdoc-theme": "^4.2.7",
+    "concurrently": "7.6.0",
+    "jsdoc": "4.0.2",
+    "minami": "^1.2.3",
     "rollup": "^3.18.0",
     "rollup-plugin-filesize": "^10.0.0",
     "rollup-plugin-visualizer": "^5.9.0",
-    "concurrently": "7.6.0"
+    "taffydb": "^2.7.3"
   },
   "files": [
     "build/sundrop.js",

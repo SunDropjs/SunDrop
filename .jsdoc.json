@@ -1,0 +1,52 @@
+{
+  "sourceType": "module",
+  "tags": {
+    "allowUnknownTags": true,
+    "dictionaries": ["jsdoc"]
+  },
+  "source": {
+    "include": ["README.md"],
+    "includePattern": ".js$",
+    "excludePattern": "(node_modules/|docs)"
+  },
+  "opts": {
+    "private": true,
+    "encoding": "utf8",
+    "readme": "./README.md",
+    "destination": "docs/",
+    "recurse": true,
+    "verbose": true,
+    "template": "./node_modules/clean-jsdoc-theme",
+    "theme_opts": {
+      "meta": [
+        {
+          "name": "author",
+          "content": "GappleCider"
+        },
+        {
+          "name": "description",
+          "content": "SUunDropjs, A JavaScript Game Engine"
+        },
+        {
+            "name": "keywords",
+            "content": "javascript, game, engine"
+        }
+      ],
+      "base_url": "https://gapplecider.github.io/SunDrop/",
+      "homepageTitle": "SunDropjs | A Javascript Game Engine",
+      "default_theme": "light"
+    }
+  },
+  "templates": {
+    "default": {
+      "cleverLinks": true,
+      "monospaceLinks": true,
+      "includeDate": false,
+      "outputSourceFiles": false
+    }
+  },
+  "markdown": {
+    "hardwrap": false,
+    "idInHeadings": true
+  }
+}

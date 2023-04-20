@@ -3,7 +3,134 @@
  * Copyright 2023 GappleCider
  * MIT
  */
+/**
+ * Linearly interpolates between two 
+ * @function
+ * @param {number} a Minimum value for interpolation
+ * @param {number} b Maximum value for interpolation
+ * @param {number} t Interpolation factor
+ * @returns {number} The interpolated value
+ */
+
+function lerp(a = 0, b = 1, t = 0.5) {
+  //Linearly interpolates between two points.
+  return a + (b - a) * t;
+}
+
+/**
+ * Returns a random integer between the specified range given
+ * @param {number} min The minimum value
+ * @param {number} max The maximum value
+ * @returns {number} The random integer
+ */
+function randomInt(min, max) {
+  // returns a random integer between min and max
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+
+/**
+ * Returns a random float between min and max
+ * @param {number} min The minimum value
+ * @param {number} max The maximum value
+ * @returns The random float 
+ */
+function randomFloat(min, max) {
+  // returns a random float between min and max
+  return Math.random() * (max - min) + min;
+}
+
+class Vec2 {
+  constructor(x = 0, y = 0) {
+    // X and Y
+    this.x = x;
+    this.y = y;
+  }
+  get xPos() {
+    // Get X position
+    return this.x;
+  }
+  get yPos() {
+    // Get Y position
+    return this.y;
+  }
+  set xPos(x = 0) {
+    // Set X position
+    this.x = x;
+
+    return this;
+  }
+  set yPos(y = 0) {
+    // Set Y position
+    this.y = y;
+
+    return this;
+  }
+  set(x = 0, y = 0) {
+    // Both X and Y
+    this.x = x;
+    this.y = y;
+
+    return this;
+  }
+  setPostion(v = 0) {
+    // set Both X and Y to the same value
+    this.x = v;
+    this.y = v;
+
+    return this;
+  }
+  clone() {
+    // Create a new Vec2
+    return this.constructor(this.x, this.y);
+  }
+  scale(s = 0) {
+    // Scale both X and Y
+    this.x *= s;
+    this.y *= s;
+
+    return this;
+  }
+  getPosition() {
+    // Get the position of the Vec2
+    const pos = {
+      x: this.x,
+      y: this.y,
+    };
+
+    return pos;
+  }
+  divide(s = 0) {
+    this.x = this.x / s;
+    this.y = this.y / s;
+
+    return this;
+  }
+  add(s = 0) {
+    this.x = this.x + s;
+    this.y = this.y + s;
+  }
+  random(min, max) {
+    this.x = randomFloat(min, max);
+    this.y = randomFloat(min, max);
+
+    return this
+  }
+}
+
+/**
+ * @class
+ * @classdesc Basic Renderer for SunDropjs
+ * @description Basic Renderer for SunDropjs
+ */
 class BasicRenderer2D {
+  /**
+   * @constructs
+   * @property {array} objs The array of objects to be renderered, updated and etc.
+   * @property {HtmlCanvasElement} domElement The canvas element
+   * @property {HtmlCanvasElement.Context2D} ctx The context of the domElement
+   * @property {number} canvasWidth The width of the canvas
+   * @property {number} canvasHeight The height of the canvas
+   */
   constructor() {
     this.objs = [];
 
@@ -12,12 +139,15 @@ class BasicRenderer2D {
     this.ctx = this.domElement.getContext("2d");
 
     // set the canvas width and height to the window size
-    this._canvasWidth = this.domElement.width = window.innerWidth;
-    this._canvasHeight = this.domElement.height = window.innerHeight;
+    this.canvasWidth = this.domElement.width = window.innerWidth;
+    this.canvasHeight = this.domElement.height = window.innerHeight;
   }
-
-  render(camera = null) {
-    this.ctx.clearRect(0, 0, this._canvasWidth, this._canvasHeight);
+  /**
+   * Renders all the objects in the Objects array
+   * @param {Object} [Camera] The camera Object
+   */
+  render(camera) {
+    this.ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
     if (camera) {
       this.ctx.save();
       this.ctx.translate(camera.pos.x, camera.pos.y);
@@ -215,24 +345,33 @@ class BasicRenderer2D {
           }
         }
       }
-      if (this.objs[i].type === 'text') {
+      if (this.objs[i].type === "text") {
         this.objs[i].props.font != undefined
-            ? (this.ctx.font =
-                this.objs[i].props.font.size + "px" + this.objs[i].props.font.fontFamily)
-            : (this.ctx.font = "48px Arial");
+          ? (this.ctx.font =
+              this.objs[i].props.font.size +
+              "px" +
+              this.objs[i].props.font.fontFamily)
+          : (this.ctx.font = "48px Arial");
 
-          this.ctx.fillText(
-            this.objs[i].text.toString(),
-            this.objs[i].pos.x,
-            this.objs[i].pos.y
-          );
+        this.ctx.fillText(
+          this.objs[i].text.toString(),
+          this.objs[i].pos.x,
+          this.objs[i].pos.y
+        );
       }
     }
     if (camera) {
       this.ctx.restore();
     }
   }
-  saveImage(url = "", x = 0, y = 0, name = "") {
+  /**
+   * Loads the image from the url and saves it to local storage.
+   * @param {string} url  Path to the location of the image
+   * @param {string} name Name of the image
+   * @param {number} x  X postion of the image
+   * @param {number} y  Y postion of the image
+   */
+  saveImage(url, name, x = 0, y = 0) {
     const texture = new Image();
     texture.src = url;
 
@@ -241,23 +380,47 @@ class BasicRenderer2D {
       localStorage.setItem(name, data);
     };
   }
+  /**
+   * Gets the image data from local storage
+   * @param {string} name The name of the image
+   * @returns {Object|error} If the image data is found in local storage then an object is returned else an error is returned
+   */
   loadImage(name) {
     const obj = localStorage.getItem(name);
     return obj ? obj : console.error("Image not found: " + name);
   }
-  add(obj = Object) {
+  /**
+   * adds a Object to {@link BasicRenderer2D|objs} array
+   * @param {Object} obj The object to be added to the {@link BasicRenderer2D|objs} array
+   */
+  add(obj) {
     this.objs.push(obj);
   }
-  remove(obj = Object) {
+  /**
+   * remove the object from the {@link BasicRenderer2D|objs} array
+   * @param {Object} obj The object to be removed from the {@link BasicRenderer2D|objs} array
+   */
+  remove(obj) {
     this.objs.splice(this.objs.indexOf(obj), 1);
   }
+  /**
+   * Emptys the {@link BasicRenderer2D|objs} array
+   */
   clear() {
     this.objs = [];
-    this.ctx.clearRect(0, 0, this._canvasWidth, this._canvasHeight);
+    this.ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
   }
-  get(obj = Object) {
+  /**
+   * Returns a object from the {@link BasicRenderer2D|objs} array 
+   * @param {Object} obj The object to be gotten from the {@link BasicRenderer|objs} array
+   * @returns {Object} A object from the {@link BasicRenderer|objs} array
+   */
+  get(obj) {
     return this.objs.indexOf(obj);
   }
+  /**
+   * Updates all the objects in {@link BasicRenderer2D|objs} array 
+   */
   update() {
     for (let i = 0; i < this.objs.length; i++) {
       if (this.objs[i].type === "box" || this.objs[i].type === "texturedbox") {
@@ -279,32 +442,38 @@ class BasicRenderer2D {
       }
     }
   }
-  createGradient(type = "", colors = [], width = 0, height = 0) {
-    if (type === "linear") {
-      const gradient = this.ctx.createLinearGradient(0, 0, width, height);
-      for (let i = 0; i < colors.length; i++) {
-        const color = colors[i];
-        gradient.addColorStop(i / colors.length, color);
-      }
-      return gradient;
+  /**
+   * Creates a linear gradient from the given array of colors
+   * @param {array} colors The array of colors
+   * @param {Vec2} point1 The x1 and y1 coordinates
+   * @param {Vec2} point2 The x2 and y2 coordinates
+   * @returns {CanvasRenderingContext2D.LinearGradient} The gradient
+   */
+  createGradient(colors, point1 = new Vec2(0, 0), point2 = new Vec2(1, 1)) {
+    const gradient = this.ctx.createLinearGradient(point1.x, point1.y, point2.x, point2.y);
+    for (let i = 0; i < colors.length; i++) {
+      const color = colors[i];
+      gradient.addColorStop(i / colors.length, color);
     }
+    return gradient;
   }
-  createRGBAColor(r = 0, g = 0, b = 0, a = 1) {
+  /**
+   * Creates a RGBA color from the given parameters 
+   * @param {number} r The red component of the RGBA color value
+   * @param {number} g The green component of the RGBA color value
+   * @param {number} b The blue component of the RGBA color value
+   * @param {number} a The alpha component of the RGBA color value
+   * @returns {string} The string representation of the RGBA color value
+   */
+  createRGBAColor(r, g, b, a = 1) {
     return "rgba(" + r + "," + g + "," + b + "," + a + ")";
   }
-  createHexColor(str = "") {
-    let hash = 0;
-    for (let i = 0; i < str.length; i++) {
-      hash = str.charCodeAt(i) + ((hash << 5) - hash);
-    }
-    let colour = "#";
-    for (var i = 0; i < 3; i++) {
-      let value = (hash >> (i * 8)) & 0xff;
-      colour += ("00" + value.toString(16)).substr(-2);
-    }
-    return colour;
-  }
-  convertHexToRGBA(hex = "") {
+  /**
+   * Converts a hex color value to a RGBA color value
+   * @param {string} hex The hex string to convert to a rgba color
+   * @returns {string} The string representation of the color
+   */
+  convertHexToRGBA(hex) {
     let c;
     if (/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)) {
       c = hex.substring(1).split("");
@@ -317,14 +486,27 @@ class BasicRenderer2D {
       );
     }
   }
-  setSize(width = 0, height = 0) {
-    this._canvasWidth = this.domElement.width = width;
-    this._canvasHeight = this.domElement.height = height;
+  /**
+   * Sets the size of the {@link BasicRenderer2D|canvasWidth} and {@link BasicRenderer2D|canvasHeight} values to the specified parameters
+   * @param {number} width The size of the {@link BasicRenderer2D|canvasWidth} to be resized to
+   * @param {number} height The size of the {@link BasicRenderer2D|canvasHeight} to be resized to
+   */
+  setSize(width, height) {
+    this.canvasWidth = this.domElement.width = width;
+    this.canvasHeight = this.domElement.height = height;
   }
-  setColor(color = "") {
+  /**
+   * Sets the background color of the {@link BasicRenderer2D|domElement}
+   * @param {RGBA|HEX|HSL|HSV|CMYK} color The color which the {@link BasicRenderer2D|domElement} will be applied to
+   */
+  setColor(color) {
     this.domElement.style.backgroundColor = color;
   }
-  setAlpha(alpha = 1) {
+  /**
+   * Sets the alpha color of the {@link BasicRenderer2D|domElement}
+   * @param {number} alpha A alpha value between 0 and 1
+   */
+  setAlpha(alpha) {
     this.domElement.style.opacity = alpha;
   }
 }
@@ -357,99 +539,6 @@ class PerspectiveCamera2D {
   scale(s = 0) {
     this.pos.x *= s;
     this.pos.y *= s;
-  }
-}
-
-function lerp(a = 0, b = 0, t = 0) {
-  //Linearly interpolates between two points.
-  return a + (b - a) * t;
-}
-
-function randomInt(min = 0, max = 1) {
-  // returns a random integer between min and max
-  return Math.floor(Math.random() * (max - min)) + min;
-}
-
-function randomFloat(min = 0, max = 1) {
-  // returns a random float between min and max
-  return Math.random() * (max - min) + min;
-}
-
-class Vec2 {
-  constructor(x = 0, y = 0) {
-    // X and Y
-    this.x = x;
-    this.y = y;
-  }
-  get xPos() {
-    // Get X position
-    return this.x;
-  }
-  get yPos() {
-    // Get Y position
-    return this.y;
-  }
-  set xPos(x = 0) {
-    // Set X position
-    this.x = x;
-
-    return this;
-  }
-  set yPos(y = 0) {
-    // Set Y position
-    this.y = y;
-
-    return this;
-  }
-  set(x = 0, y = 0) {
-    // Both X and Y
-    this.x = x;
-    this.y = y;
-
-    return this;
-  }
-  setPostion(v = 0) {
-    // set Both X and Y to the same value
-    this.x = v;
-    this.y = v;
-
-    return this;
-  }
-  clone() {
-    // Create a new Vec2
-    return this.constructor(this.x, this.y);
-  }
-  scale(s = 0) {
-    // Scale both X and Y
-    this.x *= s;
-    this.y *= s;
-
-    return this;
-  }
-  getPosition() {
-    // Get the position of the Vec2
-    const pos = {
-      x: this.x,
-      y: this.y,
-    };
-
-    return pos;
-  }
-  divide(s = 0) {
-    this.x = this.x / s;
-    this.y = this.y / s;
-
-    return this;
-  }
-  add(s = 0) {
-    this.x = this.x + s;
-    this.y = this.y + s;
-  }
-  random(min, max) {
-    this.x = randomFloat(min, max);
-    this.y = randomFloat(min, max);
-
-    return this
   }
 }
 
