@@ -34,7 +34,7 @@ function randomInt(min, max) {
  * Returns a random float between min and max
  * @param {number} min The minimum value
  * @param {number} max The maximum value
- * @returns The random float 
+ * @returns The random float
  */
 function randomFloat(min, max) {
   // returns a random float between min and max

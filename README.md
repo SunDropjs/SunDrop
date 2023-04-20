@@ -22,7 +22,7 @@ npm install sundrop
 ```javascript
 import * as SUN from "sundrop";
 
-const renderer = new SUN.Renderer();
+const renderer = new SUN.BasicRenderer2D();
 
 renderer.setColor("black")
 
