@@ -20,7 +20,7 @@ const builds = [
     output: [
       {
         file: "build/sundrop.min.js",
-        format: "umd",
+        format: "esm",
         name: "SUN",
       },
     ],

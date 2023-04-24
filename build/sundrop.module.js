@@ -4,19 +4,17 @@
  * MIT
  */
 /**
- * Linearly interpolates between two 
+ * Linearly interpolates between two
  * @function
  * @param {number} a Minimum value for interpolation
  * @param {number} b Maximum value for interpolation
  * @param {number} t Interpolation factor
  * @returns {number} The interpolated value
  */
-
 function lerp(a = 0, b = 1, t = 0.5) {
-  //Linearly interpolates between two points.
-  return a + (b - a) * t;
+    //Linearly interpolates between two points.
+    return a + (b - a) * t;
 }
-
 /**
  * Returns a random integer between the specified range given
  * @param {number} min The minimum value
@@ -24,10 +22,9 @@ function lerp(a = 0, b = 1, t = 0.5) {
  * @returns {number} The random integer
  */
 function randomInt(min, max) {
-  // returns a random integer between min and max
-  return Math.floor(Math.random() * (max - min)) + min;
+    // returns a random integer between min and max
+    return Math.floor(Math.random() * (max - min)) + min;
 }
-
 /**
  * Returns a random float between min and max
  * @param {number} min The minimum value
@@ -35,86 +32,70 @@ function randomInt(min, max) {
  * @returns The random float
  */
 function randomFloat(min, max) {
-  // returns a random float between min and max
-  return Math.random() * (max - min) + min;
+    // returns a random float between min and max
+    return Math.random() * (max - min) + min;
 }
 
 class Vec2 {
-  constructor(x = 0, y = 0) {
-    // X and Y
-    this.x = x;
-    this.y = y;
-  }
-  get xPos() {
-    // Get X position
-    return this.x;
-  }
-  get yPos() {
-    // Get Y position
-    return this.y;
-  }
-  set xPos(x = 0) {
-    // Set X position
-    this.x = x;
-
-    return this;
-  }
-  set yPos(y = 0) {
-    // Set Y position
-    this.y = y;
-
-    return this;
-  }
-  set(x = 0, y = 0) {
-    // Both X and Y
-    this.x = x;
-    this.y = y;
-
-    return this;
-  }
-  setPostion(v = 0) {
-    // set Both X and Y to the same value
-    this.x = v;
-    this.y = v;
-
-    return this;
-  }
-  clone() {
-    // Create a new Vec2
-    return this.constructor(this.x, this.y);
-  }
-  scale(s = 0) {
-    // Scale both X and Y
-    this.x *= s;
-    this.y *= s;
-
-    return this;
-  }
-  getPosition() {
-    // Get the position of the Vec2
-    const pos = {
-      x: this.x,
-      y: this.y,
-    };
-
-    return pos;
-  }
-  divide(s = 0) {
-    this.x = this.x / s;
-    this.y = this.y / s;
-
-    return this;
-  }
-  add(s = 0) {
-    this.x = this.x + s;
-    this.y = this.y + s;
-  }
-  random(min, max) {
-    this.x = randomFloat(min, max);
-    this.y = randomFloat(min, max);
-
-    return this
-  }
+    constructor(x, y) {
+        this.x = x;
+        this.y = y;
+    }
+    get xPos() {
+        // Get X position
+        return this.x;
+    }
+    get yPos() {
+        // Get Y position
+        return this.y;
+    }
+    set xPos(x) {
+        // Set X position
+        this.x = x;
+    }
+    set yPos(y) {
+        // Set Y position
+        this.y = y;
+    }
+    set(x, y) {
+        // Both X and Y
+        this.x = x;
+        this.y = y;
+    }
+    setPostion(v) {
+        // set Both X and Y to the same value
+        this.x = v;
+        this.y = v;
+        return [this.x, this.y];
+    }
+    clone() {
+        // Create a new Vec2
+        return this.constructor(this.x, this.y);
+    }
+    scale(s) {
+        // Scale both X and Y
+        this.x *= s;
+        this.y *= s;
+        return [this.x, this.y];
+    }
+    getPosition() {
+        // Get the position of the Vec2
+        return [this.x, this.y];
+    }
+    divide(s) {
+        this.x = this.x / s;
+        this.y = this.y / s;
+        return [this.x, this.y];
+    }
+    add(s) {
+        this.x = this.x + s;
+        this.y = this.y + s;
+    }
+    random(min, max) {
+        this.x = randomFloat(min, max);
+        this.y = randomFloat(min, max);
+        return [this.x, this.y];
+    }
 }
 
 /**
@@ -127,7 +108,7 @@ class BasicRenderer2D {
    * @constructs
    * @property {array} objs The array of objects to be renderered, updated and etc.
    * @property {HtmlCanvasElement} domElement The canvas element
-   * @property {HtmlCanvasElement.Context2D} ctx The context of the domElement
+   * @property {CanvasRendereringContext2D} ctx The context of the domElement
    * @property {number} canvasWidth The width of the canvas
    * @property {number} canvasHeight The height of the canvas
    */
@@ -412,7 +393,7 @@ class BasicRenderer2D {
   }
   /**
    * Returns a object from the {@link BasicRenderer2D|objs} array 
-   * @param {Object} obj The object to be gotten from the {@link BasicRenderer|objs} array
+   * @param {Object} obj The object to be gotten from the {@link BasicRenderer2D|objs} array
    * @returns {Object} A object from the {@link BasicRenderer|objs} array
    */
   get(obj) {
@@ -470,7 +451,7 @@ class BasicRenderer2D {
   }
   /**
    * Converts a hex color value to a RGBA color value
-   * @param {string} hex The hex string to convert to a rgba color
+   * @param {string} hex The Hex string to convert to a RGBA color
    * @returns {string} The string representation of the color
    */
   convertHexToRGBA(hex) {
@@ -511,32 +492,65 @@ class BasicRenderer2D {
   }
 }
 
+/**
+ * @class
+ * @classdesc A Basic Image Class
+ * @description A Basic Image Class
+ */
 class Texture2D {
-  constructor(url = "", onload = () => {}) {
-    this.url = url;
-    this.texture = new Image();
-    this.texture.src = url;
-    this.onload = onload;
-    this.load = false;
-
-    this.texture.onload = () => {
-      this.load = true;
-      this.onload();
-    };
-  }
+    /**
+     * @constructs
+     * @param {string} url The path to the image file
+     * @param {callback} onload The callback function to call when the texture loads
+     * @property {HTMLImageElement} texture The image texture
+     */
+    constructor(url, onload) {
+        const args = onload.arguments;
+        this.url = url;
+        this.texture = new Image();
+        this.texture.src = url;
+        this.onload = onload;
+        this.load = false;
+        this.texture.onload = () => {
+            this.load = true;
+            this.onload(args);
+        };
+    }
 }
 
+/**
+ * @class
+ * @classdesc The Perspective camera for SunDropjs
+ * @description The Perspective camera for SunDropjs
+ */
 class PerspectiveCamera2D {
-  constructor(x = 0, y = 0) {
+  /**
+   * @constructs
+   * @property {dictornary} pos The position of the camera
+   * @property {number} pos.x The x position of the camera
+   * @property {number} pos.y The y position of the camera
+   * @param {number} x The starting x coordinate of the camera
+   * @param {number} y The starting y coordinate of the camera
+   */
+  constructor(x, y) {
     this.pos = {
       x: x,
       y: y,
     };
   }
-  setPos(x = 0, y = 0) {
+  /**
+   * Sets the camera position to the specified parameters
+   * @param {number} x The number to set the x coordinate of the camera
+   * @param {number} y The number to set the y coordinate of the camera
+   */
+  setPos(x, y) {
     this.pos = { x: x, y: y };
   }
-  scale(s = 0) {
+  /**
+   * Multiplies the camera position by the given amount
+   * @param {number} s A number which the camera position will be multiplied by
+   */
+  scale(s) {
     this.pos.x *= s;
     this.pos.y *= s;
   }
@@ -676,11 +690,11 @@ class Line {
 }
 
 var polygon = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  Box2D: Box2D,
-  Circle2D: Circle2D,
-  Line: Line,
-  Polygon: Polygon
+    __proto__: null,
+    Box2D: Box2D,
+    Circle2D: Circle2D,
+    Line: Line,
+    Polygon: Polygon
 });
 
 class TexturedCircle2D extends Circle2D {
@@ -711,10 +725,10 @@ class TexturedPolygon extends Polygon {
 }
 
 var textured = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  TexturedBox2D: TexturedBox2D,
-  TexturedCircle2D: TexturedCircle2D,
-  TexturedPolygon: TexturedPolygon
+    __proto__: null,
+    TexturedBox2D: TexturedBox2D,
+    TexturedCircle2D: TexturedCircle2D,
+    TexturedPolygon: TexturedPolygon
 });
 
 class Pentagon2D extends Box2D {
@@ -799,39 +813,66 @@ class Hexagon2D extends Box2D {
 }
 
 var advancedgeometry = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  Hexagon2D: Hexagon2D,
-  Pentagon2D: Pentagon2D
+    __proto__: null,
+    Hexagon2D: Hexagon2D,
+    Pentagon2D: Pentagon2D
 });
 
-function addKeyListeners(key = '') {
-  document.addEventListener("keydown", (e) => {
-    if (e.key == key) {
-      return true;
-    }
-  });
+/**
+ * Adds a new event listener that is tuned for the given keycode
+ * @function
+ * @param {string} key The keycode
+ */
+function addKeyListeners(key) {
+    document.addEventListener("keydown", (e) => {
+        if (e.key == key) {
+            return true;
+        }
+    });
 }
 
+/**
+ * @class
+ * @classdesc Basic Sound class
+ * @description Basic Sound class
+ */
 class Sound {
-  constructor(path) {
-    this.sound = document.createElement("audio");
-    this.sound.src = path;
-
-    this.sound.setAttribute("preload", "auto");
-    this.sound.setAttribute("controls", "none");
-    this.sound.style.display = "none";
-    document.body.appendChild(this.sound);
-  }
-  play() {
-    this.sound.play();
-  }
-  stop() {
-    this.sound.pause();
-  }
+    /**
+     * @constructs
+     * @param {string} path The path to the sound file
+     * @property {HTMLAudioElement} sound The HTML audio element
+     */
+    constructor(path) {
+        this.sound = document.createElement("audio");
+        this.sound.src = path;
+        this.sound.setAttribute("preload", "auto");
+        this.sound.setAttribute("controls", "none");
+        this.sound.style.display = "none";
+        document.body.appendChild(this.sound);
+    }
+    /**
+     * Plays the sound
+     */
+    play() {
+        this.sound.play();
+    }
+    /*
+     * Stops the sound
+     */
+    stop() {
+        this.sound.pause();
+    }
 }
 
-function checkCollision(shape1 = Object, shape2 = Object) {
+/**
+ * Checks whether the given objects are colliding with each other
+ * @param {Object} shape1 The first Object
+ * @param {Object} shape2 The second Object
+ * @returns {boolean|error} Depending if the objects are colliding with each other true or false are returned if the either objects type is wrong an err
+ */
+function checkCollision(shape1, shape2){
   // If both shapes are circles
+
   if (shape1.type === "circle" && shape2.type === "circle") {
     // Calculate the distance between the centers
     const a = shape1.radius + shape2.radius;
@@ -935,102 +976,96 @@ function checkCollision(shape1 = Object, shape2 = Object) {
   return console.error("shapes do not have a proper type or class")
 }
 
+/**
+ * @class
+ * @classdesc Basic Mapping class
+ * @description Basic Mapping class
+ */
 class BasicMap {
-  constructor(map = [[]], key = {}, value = "1x1") {
-    this.map = map;
-    this.key = key;
-    this.value = value;
-    this.type = "map";
-
-    const processedMap = [];
-    for (let i = 0; i < this.map.length; i++) {
-      const row = this.map[i];
-
-      for (let j = 0; j < row.length; j++) {
-        const text = row[j];
-
-        for (let k = 0; k < text.length; k++) {
-          let cell = text[k];
-          let char = cell;
-
-          if (cell != " ") {
-            const value = this.value.split('x');
-            const x = k * Number(value[0]);
-            const y = i * Number(value[1]);
-            const width = Number(value[0]);
-            const height = Number(value[1]);
-            const generateProps = () => {
-              for (let i = 0; i <= Object.keys(this.key).length; i++) {
-                if (this.key[cell]) {
-                  const props = this.key[cell];
-                  return props;
-                } else if (i == Object.keys(this.key).length) {
-                  console.error("No key found");
+    constructor(map, key, value) {
+        this.map = map;
+        this.key = key;
+        this.value = value;
+        this.type = "map";
+        const processedMap = [];
+        for (let i = 0; i < this.map.length; i++) {
+            const row = this.map[i];
+            for (let j = 0; j < row.length; j++) {
+                const text = row[j];
+                for (let k = 0; k < text.length; k++) {
+                    let cell = text[k];
+                    let char = cell;
+                    if (cell != " ") {
+                        const value = this.value.split('x');
+                        const x = k * Number(value[0]);
+                        const y = i * Number(value[1]);
+                        const width = Number(value[0]);
+                        const height = Number(value[1]);
+                        const generateProps = () => {
+                            for (let i = 0; i <= Object.keys(this.key).length; i++) {
+                                if (this.key[cell]) {
+                                    const props = this.key[cell];
+                                    return props;
+                                }
+                                else if (i == Object.keys(this.key).length) {
+                                    console.error("No key found");
+                                }
+                            }
+                        };
+                        const props = generateProps();
+                        const polygon = this.generatePolygon(x, y, props.width ? props.width : width, props.height ? props.height : height);
+                        cell = class {
+                            constructor(x, y, width, height, polygon, props) {
+                                this.x = x;
+                                this.y = y;
+                                this.width = width;
+                                this.height = height;
+                                this.polygon = polygon;
+                                this.props = props;
+                            }
+                        };
+                        processedMap.push({
+                            pos: {
+                                x: x,
+                                y: y,
+                            },
+                            type: props.type,
+                            class: props.type == "box" ? 'polygon' : null,
+                            width: props.type == "box" ? props.width ? null : Number(value[0]) : null,
+                            height: props.type == "box" ? props.width ? null : Number(value[1]) : null,
+                            radius: props.type == "circle" ? props.radius : null,
+                            charName: char,
+                            width: width,
+                            height: height,
+                            polygon: polygon,
+                            props: props
+                        });
+                    }
                 }
-              }
-            };
-            const props = generateProps();
-            const polygon = this.generatePolygon(x, y, props.width ? props.width : width, props.height? props.height : height);
-            cell = class {
-              constructor(x, y, width, height, polygon, props) {
-                this.x = x;
-                this.y = y;
-                this.width = width;
-                this.height = height;
-                this.polygon = polygon;
-                this.props = props;
-              }
-            };
-
-            processedMap.push(
-              {
-                pos: {
-                  x: x,
-                  y: y,
-                },
-                type: props.type,
-                class: props.type == "box" ? 'polygon' : null,
-                width: props.type == "box"?  props.width ? null : Number(value[0]) : null,
-                height: props.type == "box"? props.width ? null : Number(value[1]) : null,
-                radius: props.type == "circle"? props.radius : null,
-                charName: char,
-                width: width,
-                height: height,
-                polygon: polygon,
-                props: props
-              }
-            );
-          }
+            }
         }
-      }
+        this.map = processedMap;
     }
-    this.map = processedMap;
-  }
-  generatePolygon(x, y, width, height) {
-    const points = [];
-
-    points.push({
-      x: x - width / 2,
-      y: y - height / 2,
-    });
-
-    points.push({
-      x: x + width / 2,
-      y: y - height / 2,
-    });
-
-    points.push({
-      x: x + width / 2,
-      y: y + height / 2,
-    });
-
-    points.push({
-      x: x - width / 2,
-      y: y + height / 2,
-    });
-
-    return points;
-  }
+    generatePolygon(x, y, width, height) {
+        const points = [];
+        points.push({
+            x: x - width / 2,
+            y: y - height / 2,
+        });
+        points.push({
+            x: x + width / 2,
+            y: y - height / 2,
+        });
+        points.push({
+            x: x + width / 2,
+            y: y + height / 2,
+        });
+        points.push({
+            x: x - width / 2,
+            y: y + height / 2,
+        });
+        return points;
+    }
 }
 
 export { advancedgeometry as AdvancedGeometry, polygon as BasicGeometry, BasicMap, BasicRenderer2D, PerspectiveCamera2D, Sound, TextObject, Texture2D, textured as TexturedGeometry, Vec2, addKeyListeners, checkCollision, lerp, randomFloat, randomInt };

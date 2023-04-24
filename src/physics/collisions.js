@@ -1,7 +1,15 @@
 import { lerp } from "../utils.js";
 
-function checkCollision(shape1 = Object, shape2 = Object) {
+
+/**
+ * Checks whether the given objects are colliding with each other
+ * @param {Object} shape1 The first Object
+ * @param {Object} shape2 The second Object
+ * @returns {boolean|error} Depending if the objects are colliding with each other true or false are returned if the either objects type is wrong an err
+ */
+function checkCollision(shape1, shape2){
   // If both shapes are circles
+
   if (shape1.type === "circle" && shape2.type === "circle") {
     // Calculate the distance between the centers
     const a = shape1.radius + shape2.radius;

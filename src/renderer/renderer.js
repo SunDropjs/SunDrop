@@ -1,4 +1,4 @@
-import { Vec2 } from "../math/vector2";
+import { Vec2 } from "../math/vector2.js";
 
 /**
  * @class
@@ -10,7 +10,7 @@ class BasicRenderer2D {
    * @constructs
    * @property {array} objs The array of objects to be renderered, updated and etc.
    * @property {HtmlCanvasElement} domElement The canvas element
-   * @property {HtmlCanvasElement.Context2D} ctx The context of the domElement
+   * @property {CanvasRendereringContext2D} ctx The context of the domElement
    * @property {number} canvasWidth The width of the canvas
    * @property {number} canvasHeight The height of the canvas
    */
@@ -295,7 +295,7 @@ class BasicRenderer2D {
   }
   /**
    * Returns a object from the {@link BasicRenderer2D|objs} array 
-   * @param {Object} obj The object to be gotten from the {@link BasicRenderer|objs} array
+   * @param {Object} obj The object to be gotten from the {@link BasicRenderer2D|objs} array
    * @returns {Object} A object from the {@link BasicRenderer|objs} array
    */
   get(obj) {
@@ -353,7 +353,7 @@ class BasicRenderer2D {
   }
   /**
    * Converts a hex color value to a RGBA color value
-   * @param {string} hex The hex string to convert to a rgba color
+   * @param {string} hex The Hex string to convert to a RGBA color
    * @returns {string} The string representation of the color
    */
   convertHexToRGBA(hex) {
