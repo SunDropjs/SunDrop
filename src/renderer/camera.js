@@ -12,27 +12,29 @@ class PerspectiveCamera2D {
    * @param {number} x The starting x coordinate of the camera
    * @param {number} y The starting y coordinate of the camera
    */
-  constructor(x, y) {
+  constructor (x, y) {
     this.pos = {
-      x: x,
-      y: y,
-    };
+      x,
+      y
+    }
   }
+
   /**
    * Sets the camera position to the specified parameters
    * @param {number} x The number to set the x coordinate of the camera
    * @param {number} y The number to set the y coordinate of the camera
    */
-  setPos(x, y) {
-    this.pos = { x: x, y: y };
+  setPos (x, y) {
+    this.pos = { x, y }
   }
+
   /**
    * Multiplies the camera position by the given amount
    * @param {number} s A number which the camera position will be multiplied by
    */
-  scale(s) {
-    this.pos.x *= s;
-    this.pos.y *= s;
+  scale (s) {
+    this.pos.x *= s
+    this.pos.y *= s
   }
 }
 

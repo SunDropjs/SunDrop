@@ -6,9 +6,9 @@
  * @param {number} t Interpolation factor
  * @returns {number} The interpolated value
  */
-function lerp(a = 0, b = 1, t = 0.5) {
-    //Linearly interpolates between two points.
-    return a + (b - a) * t;
+function lerp (a = 0, b = 1, t = 0.5) {
+  // Linearly interpolates between two points.
+  return a + (b - a) * t
 }
 /**
  * Returns a random integer between the specified range given
@@ -16,9 +16,9 @@ function lerp(a = 0, b = 1, t = 0.5) {
  * @param {number} max The maximum value
  * @returns {number} The random integer
  */
-function randomInt(min, max) {
-    // returns a random integer between min and max
-    return Math.floor(Math.random() * (max - min)) + min;
+function randomInt (min, max) {
+  // returns a random integer between min and max
+  return Math.floor(Math.random() * (max - min)) + min
 }
 /**
  * Returns a random float between min and max
@@ -26,8 +26,8 @@ function randomInt(min, max) {
  * @param {number} max The maximum value
  * @returns The random float
  */
-function randomFloat(min, max) {
-    // returns a random float between min and max
-    return Math.random() * (max - min) + min;
+function randomFloat (min, max) {
+  // returns a random float between min and max
+  return Math.random() * (max - min) + min
 }
-export { lerp, randomInt, randomFloat };
+export { lerp, randomInt, randomFloat }

@@ -3,11 +3,11 @@
  * @function
  * @param {string} key The keycode
  */
-function addKeyListeners(key) {
-    document.addEventListener("keydown", (e) => {
-        if (e.key == key) {
-            return true;
-        }
-    });
+function addKeyListeners (key) {
+  document.addEventListener('keydown', (e) => {
+    if (e.key == key) {
+      return true
+    }
+  })
 }
-export { addKeyListeners };
+export { addKeyListeners }
