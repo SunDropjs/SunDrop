@@ -4,23 +4,23 @@
  * @description A Basic Image Class
  */
 class Texture2D {
-    /**
-     * @constructs
-     * @param {string} url The path to the image file
-     * @param {callback} onload The callback function to call when the texture loads
-     * @property {HTMLImageElement} texture The image texture
-     */
-    constructor(url, onload) {
-        const args = onload.arguments;
-        this.url = url;
-        this.texture = new Image();
-        this.texture.src = url;
-        this.onload = onload;
-        this.load = false;
-        this.texture.onload = () => {
-            this.load = true;
-            this.onload(args);
-        };
+  /**
+   * @constructs
+   * @param {string} url The path to the image file
+   * @param {callback} onload The callback function to call when the texture loads
+   * @property {HTMLImageElement} texture The image texture
+   */
+  constructor (url, onload) {
+    const args = onload.arguments
+    this.url = url
+    this.texture = new Image()
+    this.texture.src = url
+    this.onload = onload
+    this.load = false
+    this.texture.onload = () => {
+      this.load = true
+      this.onload(args)
     }
+  }
 }
-export { Texture2D };
+export { Texture2D }

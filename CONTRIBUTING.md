@@ -4,13 +4,13 @@
 
 You need to have knowledge of Npm and Git.
 
-* Install NodeJs
+- Install NodeJs
 
-* Install Git
+- Install Git
 
-* Fork SunDrop
+- Fork SunDrop
 
-* clone Your Fork
+- clone Your Fork
 
       git clone https://github.com/[yourgithubname]/SunDrop.git
 
@@ -18,17 +18,17 @@ You need to have knowledge of Npm and Git.
 
 When you’ve decided to make changes, start with the following:
 
-* Update your local repo
+- Update your local repo
 
       git pull https://github.com/GappleCider/Sundrop.git
       git push
 
-* Make a new branch from the dev branch
+- Make a new branch from the dev branch
 
       git checkout dev
       git branch [mychangesbranch]
       git checkout [mychangesbranch]
 
-* Add your changes to your commit.
-* Push the changes to your forked repo.
-* Open a Pull Request (PR)
+- Add your changes to your commit.
+- Push the changes to your forked repo.
+- Open a Pull Request (PR)

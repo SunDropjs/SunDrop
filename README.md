@@ -9,13 +9,13 @@
 
 ## SunDrop is a Javascript game engine
 
-SunDrop is based on Phaser.js and Three.js 
+SunDrop is based on Phaser.js and Three.js
 
 **How to Install:**
 
 ```bash
 npm install sundrop
-```  
+```
 
 **When Installed:**
 
@@ -24,16 +24,16 @@ import * as SUN from "sundrop";
 
 const renderer = new SUN.BasicRenderer2D();
 
-renderer.setColor("black")
+renderer.setColor("black");
 
 document.body.appendChild(renderer.domElement);
 
 function animate() {
-    renderer.render()
-    renderer.update()
+  renderer.render();
+  renderer.update();
 
-    requestAnimationFrame(animate)
+  requestAnimationFrame(animate);
 }
 
-animate()
+animate();
 ```
