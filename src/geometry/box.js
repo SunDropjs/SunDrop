@@ -1,65 +1,65 @@
 class Box2D {
-  constructor(x = 0, y = 0, width = 0, height = 0) {
+  constructor (x = 0, y = 0, width = 0, height = 0) {
     // Position in a dictionary
     this.pos = {
-      x: x,
-      y: y,
-    };
+      x,
+      y
+    }
     // Dimensions
-    this.width = width;
-    this.height = height;
+    this.width = width
+    this.height = height
 
     // Properties
     this.props = {
-      visible: true,
-    };
+      visible: true
+    }
 
     // Custom properties
-    this.tags = {};
+    this.tags = {}
 
     // Class & type
-    this.class = "polygon";
-    this.type = "box";
+    this.class = 'polygon'
+    this.type = 'box'
 
     // Polygon
-    this.polygon = this.createPolygon();
+    this.polygon = this.createPolygon()
   }
 
-  createPolygon() {
+  createPolygon () {
     // Array of points
-    let points = [];
+    const points = []
 
     // Top left vertex
     points.push({
       x: this.pos.x - this.width / 2,
-      y: this.pos.y - this.height / 2,
-    });
+      y: this.pos.y - this.height / 2
+    })
 
     // Top right vertex
     points.push({
       x: this.pos.x + this.width / 2,
-      y: this.pos.y - this.height / 2,
-    });
+      y: this.pos.y - this.height / 2
+    })
 
     // Bottom Right vertex
     points.push({
       x: this.pos.x + this.width / 2,
-      y: this.pos.y + this.height / 2,
-    });
+      y: this.pos.y + this.height / 2
+    })
 
     // Bottom left vertex
     points.push({
       x: this.pos.x - this.width / 2,
-      y: this.pos.y + this.height / 2,
-    });
+      y: this.pos.y + this.height / 2
+    })
 
-    return points;
+    return points
   }
 
   // Recrates the polygon
-  update() {
-    this.polygon = this.createPolygon();
+  update () {
+    this.polygon = this.createPolygon()
   }
 }
 
-export { Box2D };
+export { Box2D }

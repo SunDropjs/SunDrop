@@ -28,8 +28,8 @@
           "content": "SUunDropjs, A JavaScript Game Engine"
         },
         {
-            "name": "keywords",
-            "content": "javascript, game, engine"
+          "name": "keywords",
+          "content": "javascript, game, engine"
         }
       ],
       "base_url": "https://gapplecider.github.io/SunDrop/",
