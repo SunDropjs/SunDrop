@@ -1,13 +1,26 @@
-name: Jsdoc-update
+name: jsdoc-setup
 
 on:
-  schedule:
-    - cron: "0 8 * * *"
-    workflow_dispatch:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+  
+  
 jobs:
-  jsdoc-update:
-    runs_on: ubuntu-latest
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will r   runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    with: npm 
-    - run: npm install -g jsdoc && jsdoc -c .jsdoc.json build/sundrop.module.js
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      # Runs a single command using the runners shell
+      - name: Run a one-line script
+        run: npm install -g jsdoc && jsdoc -c .jsdoc.json build/sundrop.module.js
