@@ -1,4 +1,4 @@
-name: jsdoc-setup
+name: CI
 
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
@@ -14,6 +14,7 @@ on:
 jobs:
   # This workflow contains a single job called "build"
   build:
+    runs-on: ubuntu-latest
     # The type of runner that the job will r   runs-on: ubuntu-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
