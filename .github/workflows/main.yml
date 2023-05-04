@@ -24,4 +24,4 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
-        run: npm install -g jsdoc && jsdoc -c .jsdoc.json build/sundrop.module.js
+        run: npm install -g jsdoc && npm install clean-jsdoc-theme && jsdoc -c .jsdoc.json build/sundrop.module.js
