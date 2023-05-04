@@ -1,0 +1,13 @@
+name: Jsdoc-update
+
+on:
+  schedule:
+    - cron: "0 8 * * *"
+    workflow_dispatch:
+
+jobs:
+  jsdoc-update:
+    runs_on: ubuntu-latest
+    steps:
+    with: npm 
+    - run: npm install -g jsdoc && jsdoc -c .jsdoc.json build/sundrop.module.js
