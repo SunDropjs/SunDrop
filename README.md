@@ -1,5 +1,5 @@
 <p align="center">
-	<a href="https://gapplecider.github.io/SunDrop/" target="_blank"><img src="Logo.png" width="150" height=150" alt="SunDrop Logo"/></a>
+	<a href="https://gapplecider.github.io/SunDrop/" target="_blank"><img src="Logo.png" style="width:150px;height:150px" alt="SunDrop Logo"/></a>
 </p>
 
 
