@@ -38,6 +38,8 @@ jobs:
         with:
           # Upload entire repository
           path: './docs'  
+      - name: update-jsdoc
+        run: npm install -g jsdoc && npm install clean-jsdoc-theme && jsdoc -c .jsdoc.json build/sundrop.module.js
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
