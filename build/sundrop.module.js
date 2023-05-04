@@ -1069,4 +1069,3 @@ class BasicMap {
 }
 
 export { advancedgeometry as AdvancedGeometry, polygon as BasicGeometry, BasicMap, BasicRenderer2D, PerspectiveCamera2D, Sound, TextObject, Texture2D, textured as TexturedGeometry, Vec2, addKeyListeners, checkCollision, lerp, randomFloat, randomInt };
-//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoic3VuZHJvcC5tb2R1bGUuanMiLCJzb3VyY2VzIjpbXSwic291cmNlc0NvbnRlbnQiOltdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiIn0=
