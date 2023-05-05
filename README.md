@@ -9,7 +9,7 @@
 		<a href="https://www.npmjs.com/sundrop" target="_blank"><img src="https://img.shields.io/npm/v/sundrop" alt="NPM Version" /></a>
 		<a href="https://www.npmjs.com/sundrop" target="_blank"><img src="https://img.shields.io/npm/l/sundrop" alt="Package License" /></a>
 		<a href="https://www.npmjs.com/sundrop" target="_blank"><img src="https://img.shields.io/npm/dm/sundrop" alt="NPM Downloads" /></a>
-		<a href="https://circleci.com/gh/GappleCider/SunDrop" target="_blank"><img src="https://img.shields.io/circleci/build/github/GappleCider/SunDrop/main" alt="CircleCI" /></a>
+		<a href="https://circleci.com/gh/SunDropjs/SunDrop" target="_blank"><img src="https://img.shields.io/circleci/build/github/SunDropjs/SunDrop/main" alt="CircleCI" /></a>
 		<a href="https://github.com/GappleCider/SunDrop/graphs/contributors" target="_blank"><img src="https://img.shields.io/github/contributors/GappleCider/SunDrop" alt="Github Contributors" /></a>
     	<a href="https://github.com/GappleCider/SunDrop/issues" target="_blank"><img src="https://img.shields.io/github/issues/GappleCider/SunDrop?color=blue" alt="Github Issues" /></a>
 	   <a href="https://github.com/GappleCider/SunDrop/pulls" target="_blank"><img src="https://img.shields.io/github/issues-pr-raw/GappleCider/SunDrop" alt="Github PRs" /></a>
