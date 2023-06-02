@@ -43,7 +43,7 @@
     "@rollup/plugin-node-resolve": "^15.0.1",
     "@rollup/plugin-terser": "^0.4.0",
     "clean-jsdoc-theme": "^4.2.7",
-    "concurrently": "7.6.0",
+    "concurrently": "8.1.0",
     "jsdoc": "4.0.2",
     "minami": "^1.2.3",
     "rollup": "^3.18.0",
